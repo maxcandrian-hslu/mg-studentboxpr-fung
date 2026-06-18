@@ -3,83 +3,86 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>TA.MG Probeprüfung FS2023</title>
+<title>TA.MG Probeprüfung – Final Edition</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f0f4f8;color:#1a202c;font-size:16px;line-height:1.55;min-height:100vh}
-.header{background:#003087;color:white;padding:14px 16px;text-align:center;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.3)}
-.header h1{font-size:1.05em;font-weight:700}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:linear-gradient(135deg,#f0f4f8 0%,#e8eef7 100%);color:#1a202c;font-size:16px;line-height:1.55;min-height:100vh}
+.header{background:linear-gradient(135deg,#003087 0%,#0050c8 100%);color:white;padding:14px 16px;text-align:center;position:sticky;top:0;z-index:100;box-shadow:0 4px 16px rgba(0,48,135,0.4)}
+.header h1{font-size:1.05em;font-weight:700;letter-spacing:0.02em}
 .header p{font-size:0.78em;opacity:0.85;margin-top:2px}
-.progress-bar-wrap{background:#001f5e;padding:8px 16px 10px}
-.progress-bar{height:6px;background:rgba(255,255,255,0.25);border-radius:3px;overflow:hidden}
-.progress-fill{height:100%;background:#48bb78;border-radius:3px;transition:width 0.3s ease}
+.progress-bar-wrap{background:rgba(0,30,90,0.7);padding:8px 16px 10px;backdrop-filter:blur(4px)}
+.progress-bar{height:7px;background:rgba(255,255,255,0.2);border-radius:4px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,#48bb78,#38d88e);border-radius:4px;transition:width 0.4s ease}
 .progress-text{color:rgba(255,255,255,0.85);font-size:0.75em;text-align:right;margin-top:4px}
 .screen{display:none}
 .screen.active{display:block}
 
+/* LOGIN */
+.login-wrap{padding:32px 16px;min-height:80vh;display:flex;align-items:center}
+.login-card{background:white;border-radius:20px;padding:36px 28px;width:100%;max-width:420px;margin:0 auto;box-shadow:0 16px 48px rgba(0,48,135,0.18);text-align:center}
+.login-icon{font-size:3.2em;margin-bottom:14px;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.15))}
+.login-card h2{color:#003087;font-size:1.55em;margin-bottom:6px;font-weight:800}
+.login-card p{color:#718096;font-size:0.88em;margin-bottom:24px}
+.form-group{text-align:left;margin-bottom:16px}
+.form-group label{font-size:0.85em;font-weight:700;color:#4a5568;display:block;margin-bottom:7px;letter-spacing:0.03em;text-transform:uppercase}
+.form-group input{width:100%;padding:14px 16px;border:2px solid #e2e8f0;border-radius:12px;font-size:1em;outline:none;transition:all 0.2s;background:#f8fafc}
+.form-group input:focus{border-color:#003087;background:white;box-shadow:0 0 0 4px rgba(0,48,135,0.08)}
+.login-error{color:#c53030;font-size:0.85em;background:#fff5f5;border:1px solid #fc8181;border-radius:10px;padding:10px;margin-bottom:14px;display:none}
+.btn-login{width:100%;background:linear-gradient(135deg,#003087,#0050c8);color:white;border:none;padding:16px;border-radius:12px;font-size:1.05em;font-weight:700;cursor:pointer;margin-top:10px;box-shadow:0 4px 16px rgba(0,48,135,0.3);transition:transform 0.1s,box-shadow 0.1s}
+.btn-login:active{transform:scale(0.98);box-shadow:0 2px 8px rgba(0,48,135,0.2)}
+
 /* START */
 .start-wrap{padding:24px 16px}
-.start-card{background:white;border-radius:16px;padding:28px 20px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,0.12)}
-.start-icon{font-size:3.5em;margin-bottom:12px}
-.start-card h2{color:#003087;font-size:1.4em;margin-bottom:8px}
-.start-card p{color:#718096;font-size:0.9em;margin-bottom:6px}
-.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0}
-.info-box{background:#ebf4ff;border-radius:10px;padding:12px;text-align:center}
-.info-box .num{font-size:1.6em;font-weight:700;color:#003087}
-.info-box .lbl{font-size:0.75em;color:#4a5568;margin-top:2px}
-.btn-start{width:100%;background:#003087;color:white;border:none;padding:16px;border-radius:12px;font-size:1.1em;font-weight:700;cursor:pointer;letter-spacing:0.3px}
-.btn-start:active{background:#001f5e}
-.correction-note{background:#fff3cd;border:1px solid #ffc107;border-radius:8px;padding:12px;margin:16px 0;font-size:0.85em;color:#856404}
+.start-card{background:white;border-radius:20px;padding:32px 22px;text-align:center;box-shadow:0 8px 32px rgba(0,48,135,0.14)}
+.start-icon{font-size:3.8em;margin-bottom:14px;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.12))}
+.start-card h2{color:#003087;font-size:1.45em;margin-bottom:8px;font-weight:800}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}
+.info-box{background:linear-gradient(135deg,#ebf4ff,#dbeafe);border-radius:12px;padding:14px;text-align:center;border:1px solid rgba(0,80,200,0.15)}
+.info-box .num{font-size:1.7em;font-weight:800;color:#003087}
+.info-box .lbl{font-size:0.75em;color:#4a5568;margin-top:3px;font-weight:600}
+.btn-start{width:100%;background:linear-gradient(135deg,#003087,#0050c8);color:white;border:none;padding:17px;border-radius:14px;font-size:1.1em;font-weight:700;cursor:pointer;box-shadow:0 4px 16px rgba(0,48,135,0.3);transition:transform 0.1s,box-shadow 0.1s}
+.btn-start:active{transform:scale(0.98);box-shadow:0 2px 8px rgba(0,48,135,0.2)}
 
 /* QUIZ */
-.q-card{background:white;margin:12px 14px;border-radius:12px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,0.1)}
-.q-title{font-size:0.9em;font-weight:700;color:#003087;border-bottom:2px solid #003087;padding-bottom:8px;margin-bottom:14px}
-.q-context{background:#f7fafc;border-left:4px solid #90cdf4;padding:11px;font-size:0.85em;margin-bottom:14px;border-radius:0 8px 8px 0;line-height:1.6}
-.q-text{font-weight:600;font-size:0.92em;margin-bottom:12px;color:#2d3748}
-.q-instruction{font-size:0.8em;color:#718096;margin-bottom:10px;font-style:italic}
-
-/* Checkboxes / Radio */
-.opt-label{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border:2px solid #e2e8f0;border-radius:9px;margin-bottom:8px;cursor:pointer;transition:border-color 0.15s,background 0.15s;-webkit-tap-highlight-color:transparent}
-.opt-label:active{background:#f0f4ff}
+.q-card{background:white;margin:12px 14px;border-radius:16px;padding:0;box-shadow:0 4px 20px rgba(0,48,135,0.1);overflow:hidden}
+.q-card-header{background:linear-gradient(135deg,#003087 0%,#0050c8 100%);padding:14px 18px 12px;position:relative}
+.q-type-badge{display:inline-block;background:rgba(255,255,255,0.2);color:white;font-size:0.7em;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:6px;letter-spacing:0.04em;backdrop-filter:blur(4px)}
+.q-title{font-size:0.9em;font-weight:700;color:white;margin:0}
+.q-card-body{padding:16px 18px 18px}
+.q-context{background:#f0f7ff;border-left:4px solid #0050c8;padding:12px 14px;font-size:0.85em;margin-bottom:14px;border-radius:0 10px 10px 0;line-height:1.65;color:#1a365d}
+.q-text{font-weight:700;font-size:0.94em;margin-bottom:12px;color:#1a202c;line-height:1.5}
+.q-instruction{font-size:0.8em;color:#718096;margin-bottom:10px;font-style:italic;background:#f8fafc;padding:6px 10px;border-radius:6px;display:inline-block}
+.opt-label{display:flex;align-items:flex-start;gap:10px;padding:11px 14px;border:2px solid #e2e8f0;border-radius:10px;margin-bottom:8px;cursor:pointer;transition:all 0.15s;-webkit-tap-highlight-color:transparent;background:#fafbfc}
+.opt-label:hover{border-color:#a3bef8;background:#f0f5ff}
 .opt-label input{flex-shrink:0;margin-top:2px;width:19px;height:19px;accent-color:#003087}
-.opt-text{font-size:0.88em;line-height:1.45}
+.opt-text{font-size:0.88em;line-height:1.5}
 .opt-label.correct-sel{border-color:#48bb78;background:#f0fff4}
 .opt-label.wrong-sel{border-color:#fc8181;background:#fff5f5}
 .opt-label.missed{border-color:#f6ad55;background:#fffaf0}
-.opt-tag{font-size:0.72em;font-weight:700;margin-left:6px;padding:1px 5px;border-radius:4px}
+.opt-tag{font-size:0.72em;font-weight:700;margin-left:6px;padding:2px 7px;border-radius:20px}
 .tag-ok{background:#c6f6d5;color:#276749}
 .tag-wrong{background:#fed7d7;color:#c53030}
 .tag-missed{background:#feebc8;color:#c05621}
-
-/* Matching */
-.match-row{margin-bottom:12px;display:flex;flex-direction:column;gap:6px}
-.match-left{background:#ebf4ff;border:1px solid #90cdf4;border-radius:8px;padding:8px 11px;font-size:0.83em;line-height:1.45;color:#1a365d}
+.match-row{margin-bottom:14px;display:flex;flex-direction:column;gap:6px}
+.match-left{background:linear-gradient(90deg,#ebf4ff,#dbeafe);border:1px solid #90cdf4;border-radius:10px;padding:10px 13px;font-size:0.83em;line-height:1.5;color:#1a365d;font-weight:600}
 .match-right-wrap{display:flex;align-items:center;gap:6px}
-.match-arrow{color:#90cdf4;font-size:1em;flex-shrink:0}
-.match-select{flex:1;padding:8px 10px;border:2px solid #e2e8f0;border-radius:8px;font-size:0.83em;background:white;color:#1a202c;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7'%3E%3Cpath d='M0 0l5 7 5-7z' fill='%23718096'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;background-size:10px;padding-right:28px}
+.match-arrow{color:#0050c8;font-size:1.1em;flex-shrink:0}
+.match-select{flex:1;padding:9px 12px;border:2px solid #e2e8f0;border-radius:10px;font-size:0.83em;background:#fafbfc;color:#1a202c;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7'%3E%3Cpath d='M0 0l5 7 5-7z' fill='%23718096'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;background-size:10px;padding-right:28px;transition:border-color 0.15s}
+.match-select:focus{outline:none;border-color:#003087;background:white}
 .match-select.correct-sel{border-color:#48bb78;background-color:#f0fff4}
 .match-select.wrong-sel{border-color:#fc8181;background-color:#fff5f5}
-
-/* Ordering */
 .order-items{display:flex;flex-direction:column;gap:8px}
 .order-row{display:flex;align-items:center;gap:8px}
 .order-pos{background:#003087;color:white;border-radius:6px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:0.85em;font-weight:700;flex-shrink:0}
 .order-select{flex:1;padding:9px;border:2px solid #e2e8f0;border-radius:8px;font-size:0.85em;background:white}
-
-/* Fill-in number */
 .fillin-sentence{font-size:0.88em;line-height:2.2;margin-bottom:14px;background:#f7fafc;padding:10px;border-radius:8px}
 .fillin-input{display:inline-block;width:70px;border:none;border-bottom:2px solid #003087;padding:2px 6px;font-size:0.9em;text-align:center;background:transparent;color:#003087;font-weight:600;outline:none}
 .fillin-input.correct-sel{color:#276749;border-bottom-color:#48bb78}
 .fillin-input.wrong-sel{color:#c53030;border-bottom-color:#fc8181}
-.correct-hint{font-size:0.8em;color:#c53030;display:none}
-
-/* Fill-in select */
 .fillin-sel{display:inline-block}
 .fillin-sel select{border:2px solid #003087;border-radius:6px;padding:3px 24px 3px 8px;font-size:0.83em;background:white;color:#003087;font-weight:600;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='6'%3E%3Cpath d='M0 0l4 6 4-6z' fill='%23003087'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;background-size:8px;cursor:pointer}
 .fillin-sel select.correct-sel{border-color:#48bb78;color:#276749}
 .fillin-sel select.wrong-sel{border-color:#fc8181;color:#c53030}
-
-/* TF Matrix */
 .tf-table{width:100%;border-collapse:collapse;font-size:0.85em;margin:8px 0}
 .tf-table th{background:#003087;color:white;padding:8px 10px;text-align:center;font-weight:600;font-size:0.9em}
 .tf-table td{padding:8px 10px;border:1px solid #e2e8f0;vertical-align:middle}
@@ -88,42 +91,84 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .tf-radio-cell input{width:20px;height:20px;accent-color:#003087;cursor:pointer}
 .tf-row-correct{background:#f0fff4}
 .tf-row-wrong{background:#fff5f5}
-
-/* Free text */
 .freetext-info{background:#f7fafc;border:1px solid #e2e8f0;border-radius:8px;padding:12px;font-size:0.85em;color:#718096;margin-bottom:12px}
 .model-answer-btn{background:#48bb78;color:white;border:none;padding:11px 20px;border-radius:9px;font-size:0.88em;font-weight:600;cursor:pointer;width:100%;margin-top:8px}
 .model-answer-box{background:#f0fff4;border:2px solid #48bb78;border-radius:9px;padding:14px;margin-top:10px;display:none;font-size:0.87em;line-height:1.6}
 .model-answer-box h4{color:#276749;margin-bottom:8px;font-size:0.9em}
-
-/* Result inline */
 .result-box{border-radius:9px;padding:12px;margin-top:10px;font-size:0.85em;display:none}
 .result-box.ok{background:#f0fff4;border:2px solid #48bb78;color:#276749}
 .result-box.fail{background:#fff5f5;border:2px solid #fc8181;color:#c53030}
-
-/* Navigation */
-.nav-wrap{display:flex;gap:10px;padding:8px 14px 20px}
-.btn-nav{flex:1;padding:14px;border:none;border-radius:11px;font-size:1em;font-weight:700;cursor:pointer;transition:opacity 0.15s}
-.btn-nav:active{opacity:0.75}
+.nav-wrap{display:flex;gap:10px;padding:8px 14px 22px}
+.btn-nav{flex:1;padding:15px;border:none;border-radius:12px;font-size:1em;font-weight:700;cursor:pointer;transition:all 0.15s}
+.btn-nav:active{transform:scale(0.97)}
 .btn-prev{background:#e2e8f0;color:#4a5568}
-.btn-next{background:#003087;color:white}
-.btn-check{background:#f6ad55;color:#744210}
-.btn-submit{background:#48bb78;color:white}
+.btn-prev:hover{background:#d0d8e8}
+.btn-next{background:linear-gradient(135deg,#003087,#0050c8);color:white;box-shadow:0 3px 12px rgba(0,48,135,0.25)}
+.btn-check{background:linear-gradient(135deg,#f6ad55,#ed8936);color:white;box-shadow:0 3px 12px rgba(246,173,85,0.3)}
+.btn-submit{background:linear-gradient(135deg,#48bb78,#38a169);color:white;box-shadow:0 3px 12px rgba(72,187,120,0.3)}
 
-/* Results screen */
+/* RESULTS */
 .results-wrap{padding:16px}
-.results-header{background:white;border-radius:12px;padding:20px;text-align:center;margin-bottom:14px;box-shadow:0 2px 8px rgba(0,0,0,0.1)}
-.score-ring{width:110px;height:110px;border-radius:50%;background:#003087;color:white;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:12px auto}
-.score-ring .num{font-size:2em;font-weight:700;line-height:1}
+.results-header{background:white;border-radius:16px;padding:24px 20px;text-align:center;margin-bottom:14px;box-shadow:0 4px 20px rgba(0,48,135,0.1)}
+.score-ring{width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,#003087,#0050c8);color:white;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:12px auto;box-shadow:0 6px 24px rgba(0,48,135,0.35)}
+.score-ring .num{font-size:2.2em;font-weight:800;line-height:1}
 .score-ring .lbl{font-size:0.72em;opacity:0.85}
-.grade-badge{display:inline-block;background:#48bb78;color:white;padding:4px 14px;border-radius:20px;font-weight:700;font-size:0.9em;margin-top:8px}
-.results-section{margin-bottom:10px}
-.results-q-card{background:white;border-radius:10px;margin-bottom:8px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.08)}
-.results-q-header{padding:10px 14px;font-size:0.85em;font-weight:700;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
-.rh-correct{background:#f0fff4;color:#276749;border-left:4px solid #48bb78}
-.rh-wrong{background:#fff5f5;color:#c53030;border-left:4px solid #fc8181}
-.results-q-body{padding:10px 14px 14px;font-size:0.82em;display:none;border-top:1px solid #e2e8f0}
+.grade-badge{display:inline-block;background:linear-gradient(135deg,#48bb78,#38a169);color:white;padding:5px 18px;border-radius:20px;font-weight:700;font-size:0.9em;margin-top:10px;box-shadow:0 3px 10px rgba(72,187,120,0.3)}
+.results-q-card{background:white;border-radius:12px;margin-bottom:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.07)}
+.results-q-header{padding:11px 14px;font-size:0.85em;font-weight:700;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+.rh-correct{background:linear-gradient(90deg,#f0fff4,#e6fff0);color:#276749;border-left:4px solid #48bb78}
+.rh-wrong{background:linear-gradient(90deg,#fff5f5,#fff0f0);color:#c53030;border-left:4px solid #fc8181}
+.results-q-body{padding:10px 14px 14px;font-size:0.82em;display:none;border-top:1px solid #f0f4f8}
 .results-q-body.open{display:block}
-.btn-restart{width:100%;background:#003087;color:white;border:none;padding:15px;border-radius:11px;font-size:1em;font-weight:700;cursor:pointer;margin-top:6px}
+.btn-podium{width:100%;background:linear-gradient(135deg,#f6ad55,#ed8936);color:white;border:none;padding:16px;border-radius:12px;font-size:1em;font-weight:700;cursor:pointer;margin-top:8px;box-shadow:0 4px 14px rgba(246,173,85,0.35)}
+.btn-restart{width:100%;background:linear-gradient(135deg,#003087,#0050c8);color:white;border:none;padding:16px;border-radius:12px;font-size:1em;font-weight:700;cursor:pointer;margin-top:10px;box-shadow:0 4px 14px rgba(0,48,135,0.25)}
+
+/* PODIUM */
+.podium-wrap{padding:20px 16px;text-align:center;overflow:hidden}
+.podium-title{color:#003087;font-size:1.4em;font-weight:800;margin-bottom:4px}
+.podium-sub{color:#718096;font-size:0.85em;margin-bottom:24px}
+.podium-stage{display:flex;align-items:flex-end;justify-content:center;gap:10px;height:210px;margin-bottom:24px}
+.podium-col{display:flex;flex-direction:column;align-items:center;width:92px}
+.podium-avatar{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5em;margin-bottom:5px;border:3px solid white;box-shadow:0 4px 12px rgba(0,0,0,0.25)}
+.podium-name{font-size:0.72em;font-weight:700;color:#1a202c;margin-bottom:3px;max-width:92px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.podium-score{font-size:0.68em;color:#4a5568;margin-bottom:6px;font-weight:600}
+.podium-bar{width:100%;border-radius:10px 10px 0 0;display:flex;align-items:center;justify-content:center;font-size:1.5em;transform:scaleY(0);transform-origin:bottom;animation:growUp 0.9s cubic-bezier(0.34,1.56,0.64,1) forwards}
+.podium-bar.p1{background:linear-gradient(180deg,#fef08a,#eab308);height:140px;animation-delay:0.1s;box-shadow:0 -4px 20px rgba(234,179,8,0.4)}
+.podium-bar.p2{background:linear-gradient(180deg,#e2e8f0,#94a3b8);height:105px;animation-delay:0.3s;box-shadow:0 -4px 14px rgba(148,163,184,0.4)}
+.podium-bar.p3{background:linear-gradient(180deg,#fcd9b0,#b45309);height:78px;animation-delay:0.5s;box-shadow:0 -4px 12px rgba(180,83,9,0.3)}
+@keyframes growUp{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+.podium-rank{font-weight:800;color:white;font-size:1.15em;text-shadow:0 2px 4px rgba(0,0,0,0.4)}
+.ranking-list{background:white;border-radius:14px;overflow:hidden;box-shadow:0 4px 16px rgba(0,48,135,0.1);margin-bottom:16px}
+.ranking-row{display:flex;align-items:center;padding:11px 16px;border-bottom:1px solid #f0f4f8;gap:10px;transition:background 0.15s}
+.ranking-row:last-child{border-bottom:none}
+.ranking-row.me{background:linear-gradient(90deg,#ebf4ff,#f0f5ff);border-left:4px solid #003087}
+.rank-pos{width:28px;font-weight:700;font-size:0.9em;color:#003087;text-align:center;flex-shrink:0}
+.rank-medal{font-size:1.2em;width:28px;text-align:center;flex-shrink:0}
+.rank-name{flex:1;font-size:0.88em;font-weight:600}
+.rank-score{font-size:0.85em;color:#4a5568;font-weight:600}
+.rank-pct{font-size:0.75em;color:#a0aec0;margin-left:4px}
+.btn-play-again{width:100%;background:linear-gradient(135deg,#003087,#0050c8);color:white;border:none;padding:16px;border-radius:12px;font-size:1em;font-weight:700;cursor:pointer;margin-bottom:8px;box-shadow:0 4px 14px rgba(0,48,135,0.25)}
+.btn-clear{width:100%;background:#f0f4f8;color:#4a5568;border:none;padding:13px;border-radius:12px;font-size:0.9em;font-weight:600;cursor:pointer;transition:background 0.15s}
+.btn-clear:hover{background:#e2e8f0}
+
+/* CONFETTI */
+.confetti-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:999;overflow:hidden}
+.confetti-piece{position:absolute;width:8px;height:8px;top:-10px;opacity:0;animation:confettiFall linear forwards}
+@keyframes confettiFall{0%{transform:translateY(0) rotate(0deg);opacity:1}100%{transform:translateY(110vh) rotate(720deg);opacity:0}}
+
+/* WRONG REVIEW */
+.wrong-screen{padding:16px}
+.wrong-banner{background:linear-gradient(135deg,#fc8181,#e53e3e);color:white;border-radius:14px;padding:16px 18px;text-align:center;margin-bottom:16px;box-shadow:0 4px 14px rgba(252,129,129,0.35)}
+.wrong-banner h3{font-size:1.1em;font-weight:800;margin-bottom:2px}
+.wrong-banner p{font-size:0.82em;opacity:0.9}
+.wrong-card{background:white;border-radius:14px;margin-bottom:12px;overflow:hidden;box-shadow:0 3px 12px rgba(0,0,0,0.08);border-left:4px solid #fc8181}
+.wrong-card-head{background:linear-gradient(90deg,#fff5f5,#fff8f8);padding:12px 16px;font-size:0.88em;font-weight:700;color:#c53030}
+.wrong-card-body{padding:12px 16px;font-size:0.85em}
+.wrong-q-text{font-weight:600;color:#2d3748;margin-bottom:10px;line-height:1.5}
+.wrong-answer{background:linear-gradient(90deg,#f0fff4,#e6fff0);border:1px solid #48bb78;border-radius:8px;padding:9px 12px;font-size:0.85em;color:#276749;margin-bottom:4px;display:flex;align-items:center;gap:6px}
+.wrong-answer::before{content:"✓";font-weight:800;flex-shrink:0}
+.btn-wrong-back{width:100%;background:linear-gradient(135deg,#003087,#0050c8);color:white;border:none;padding:16px;border-radius:12px;font-size:1em;font-weight:700;cursor:pointer;margin-top:10px;box-shadow:0 4px 14px rgba(0,48,135,0.25)}
+.btn-wrong-show{width:100%;background:linear-gradient(135deg,#fc8181,#e53e3e);color:white;border:none;padding:13px;border-radius:12px;font-size:0.9em;font-weight:700;cursor:pointer;margin-bottom:8px;display:none}
 
 /* Tables */
 .tbl-scroll{overflow-x:auto;margin:10px 0;-webkit-overflow-scrolling:touch}
@@ -136,8 +181,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .nwa-table .must{background:#fee2e2}
 .nwa-table .need{background:#dcfce7}
 .nwa-table .nth{background:#f3e8ff}
-
-/* Process diagram */
 .proc-diagram{font-size:0.8em;margin:12px 0}
 .proc-row{display:flex;align-items:center;gap:6px;margin-bottom:10px;flex-wrap:wrap}
 .proc-label{font-weight:700;min-width:130px;padding:4px 8px;border-radius:6px;font-size:0.9em}
@@ -151,12 +194,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .proc-boxes{display:flex;align-items:center;gap:3px;flex-wrap:wrap}
 .pbox{width:30px;height:30px;border:2px solid #003087;border-radius:5px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85em;background:#ebf4ff;color:#003087}
 .pbox.merged{width:50px;font-size:0.75em}
-.pbox.crossed{border-color:#fc8181;background:#fff5f5;color:#c53030;text-decoration:line-through}
 .parr{color:#003087;font-size:1.2em}
 .pbox-new{background:#dcfce7;border-color:#48bb78;color:#166534}
 .proc-parallel{display:flex;flex-direction:column;gap:3px}
-
-/* Orgchart */
 .org-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
 .org-chart{min-width:600px;font-size:0.72em;padding:8px}
 .org-box{border:1px solid #90cdf4;border-radius:5px;padding:5px 8px;text-align:center;line-height:1.3;background:#ebf4ff;color:#1a365d;font-weight:600;font-size:0.9em}
@@ -166,52 +206,60 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .org-box.line{background:#dcfce7;border-color:#22c55e;color:#14532d;font-size:0.85em}
 .org-box.sub{background:#f3e8ff;border-color:#a855f7;color:#4c1d95;font-size:0.82em}
 .org-box.subsub{background:#fce7f3;border-color:#ec4899;color:#831843;font-size:0.8em}
-.org-level{display:flex;gap:6px;justify-content:center;margin-top:6px;flex-wrap:wrap}
 .org-connector{text-align:center;color:#90cdf4;font-size:1.1em}
-.org-row{display:flex;gap:4px}
 .org-section{border:1px dashed #90cdf4;border-radius:6px;padding:6px;margin-top:4px}
 .org-section-label{font-size:0.7em;color:#4a5568;font-weight:600;margin-bottom:4px;font-style:italic}
-
-@media(max-width:380px){
-  .q-card{margin:8px;padding:14px}
-  .nav-wrap{padding:6px 8px 16px}
-  .proc-label{min-width:110px}
-}
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <div class="header">
   <h1>📚 TA.MG Probeprüfung</h1>
-  <p>Modulendprüfung FS2023 – Korrigierte Version</p>
+  <p id="headerSub">Modulendprüfung FS2023 – Final Edition (zufällige Reihenfolge)</p>
 </div>
 <div class="progress-bar-wrap" id="progressWrap" style="display:none">
   <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
   <div class="progress-text" id="progressText">Frage 1 von 45</div>
 </div>
 
-<!-- START SCREEN -->
-<div id="startScreen" class="screen active">
+<!-- LOGIN -->
+<div id="loginScreen" class="screen active">
+<div class="login-wrap">
+<div class="login-card">
+  <div class="login-icon">🔐</div>
+  <h2>MG Probeprüfung</h2>
+  <p>Gib deinen Namen und das Passwort ein, um zu starten.</p>
+  <div class="login-error" id="loginError">❌ Falsches Passwort – versuch's nochmal!</div>
+  <div class="form-group">
+    <label>Dein Name</label>
+    <input type="text" id="inputName" placeholder="z.B. Max Mustermann" autocomplete="name">
+  </div>
+  <div class="form-group">
+    <label>Passwort</label>
+    <input type="password" id="inputPassword" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()">
+  </div>
+  <button class="btn-login" onclick="doLogin()">Einloggen →</button>
+</div>
+</div>
+</div>
+
+<!-- START -->
+<div id="startScreen" class="screen">
 <div class="start-wrap">
   <div class="start-card">
-    <div class="start-icon">📝</div>
-    <h2>MG Probeprüfung</h2>
-    <p>Modulendprüfung FS2023 – HSLU</p>
-    <p style="font-size:0.8em;color:#a0aec0">Korrigierte Fassung (alle Fehler behoben)</p>
+    <div class="start-icon">🎯</div>
+    <h2 id="welcomeMsg">Viel Erfolg!</h2>
+    <p style="color:#718096;font-size:0.9em">Modulendprüfung FS2023 – HSLU</p>
     <div class="info-grid">
       <div class="info-box"><div class="num">45</div><div class="lbl">Fragen</div></div>
-      <div class="info-box"><div class="num">MC/TF/Match</div><div class="lbl">Fragetypen</div></div>
-    </div>
-    <div class="correction-note">
-      ⚠️ <strong>Korrigierte Version:</strong> Diese Prüfung enthält die richtigen Antworten. Fehler aus der Originalabgabe wurden korrigiert (u.a. Q1, Q2, Q3, Q6, Q7, Q17, Q21, Q24, Q25, Q31, Q36, Q39, Q42).
+      <div class="info-box"><div class="num">🏆</div><div class="lbl">Rangliste</div></div>
     </div>
     <button class="btn-start" onclick="startQuiz()">Prüfung starten →</button>
   </div>
 </div>
 </div>
 
-<!-- QUIZ SCREEN -->
+<!-- QUIZ -->
 <div id="quizScreen" class="screen">
   <div id="questionArea"></div>
   <div class="nav-wrap">
@@ -221,11 +269,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
   </div>
 </div>
 
-<!-- RESULTS SCREEN -->
+<!-- RESULTS -->
 <div id="resultsScreen" class="screen">
   <div class="results-wrap">
     <div class="results-header">
-      <h2 style="color:#003087;font-size:1.2em">Ergebnis</h2>
+      <h2 style="color:#003087;font-size:1.2em">Dein Ergebnis</h2>
       <div class="score-ring">
         <div class="num" id="scoreNum">-</div>
         <div class="lbl">Punkte</div>
@@ -234,256 +282,194 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
       <p style="margin-top:10px;font-size:0.9em;color:#718096" id="scoreMsg"></p>
     </div>
     <div id="resultsDetail"></div>
-    <button class="btn-restart" onclick="restartQuiz()">↺ Neu starten</button>
+    <button class="btn-podium" onclick="showPodium()">🏆 Zur Rangliste</button>
+    <button class="btn-restart" onclick="restartFromResults()">↺ Neu starten</button>
   </div>
 </div>
+
+<!-- PODIUM -->
+<div id="podiumScreen" class="screen">
+<div class="podium-wrap">
+  <div class="podium-title">🏆 Rangliste</div>
+  <div class="podium-sub" id="podiumSub">Alle Ergebnisse</div>
+  <div class="podium-stage" id="podiumStage"></div>
+  <div class="ranking-list" id="rankingList"></div>
+  <button class="btn-play-again" onclick="playAgain()">↺ Nochmal spielen</button>
+  <button class="btn-wrong-show" id="btnWrongReview" onclick="showWrongReview()"></button>
+  <button class="btn-clear" onclick="clearScores()">🗑️ Rangliste leeren</button>
+</div>
+</div>
+
+<!-- WRONG REVIEW -->
+<div id="wrongScreen" class="screen">
+<div class="wrong-screen">
+  <h2 style="color:#c53030;margin-bottom:14px">❌ Falsche Fragen</h2>
+  <div id="wrongList"></div>
+  <button class="btn-wrong-back" onclick="backToPodium()">← Zurück zur Rangliste</button>
+</div>
+</div>
+
+
+<div class="confetti-container" id="confettiContainer"></div>
 
 <script>
-// ==========================================================
-// IMAGE RENDERERS
-// ==========================================================
+const PASSWORD = "dubistgutgenug";
+const STORAGE_KEY = "mg_scores_v2";
+let currentUser = "";
+let currentQ = 0;
+let userAnswers = [];
+let checked = [];
+let lastScore = 0;
+let lastMax = 0;
+let questionOrder = [];
+let optionMaps = {};
+let wrongQs = [];
 
+function shuffle(arr){var a=arr.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+
+// ── LOGIN ──────────────────────────────────────────────
+function doLogin(){
+  var name = document.getElementById('inputName').value.trim();
+  var pw = document.getElementById('inputPassword').value.trim();
+  var err = document.getElementById('loginError');
+  if(!name){ err.textContent='❌ Bitte Namen eingeben!'; err.style.display='block'; return; }
+  if(pw !== PASSWORD){ err.style.display='block'; return; }
+  err.style.display='none';
+  currentUser = name;
+  document.getElementById('welcomeMsg').textContent = 'Hallo, ' + name + '! 👋';
+  document.getElementById('loginScreen').classList.remove('active');
+  document.getElementById('startScreen').classList.add('active');
+}
+
+// ── IMAGE RENDERERS ────────────────────────────────────
 function renderNWA(){
-return `<div class="tbl-scroll">
-<table class="nwa-table">
-<tr>
-  <th rowspan="2">Kriterien</th>
-  <th rowspan="2">Gewicht</th>
-  <th rowspan="2">Bew.-Skala</th>
-  <th colspan="2" style="background:#1a5c9e">Prod.Verlagerung China</th>
-  <th colspan="2" style="background:#1a5c9e">Prod.Verlagerung Slowakei</th>
-  <th colspan="2" style="background:#1a5c9e">Prod.Verlagerung Ukraine</th>
-</tr>
-<tr>
-  <th>Bewertung</th><th>×Gewicht</th>
-  <th>Bewertung</th><th>×Gewicht</th>
-  <th>Bewertung</th><th>×Gewicht</th>
-</tr>
-<tr><td colspan="9" class="cat-head">Must-Kriterien</td></tr>
-<tr class="must">
-  <td class="item-cell">erwartete Kostensenkung &gt;30%</td>
-  <td>30%</td><td>1–10</td><td>10</td><td>3</td><td>5</td><td>1.5</td><td>7</td><td>2.1</td>
-</tr>
-<tr class="must">
-  <td class="item-cell">Kapitalbedarf &lt; 2'000'000 CHF</td>
-  <td>30%</td><td>1–10</td><td>6</td><td>1.8</td><td>4</td><td>1.2</td><td>8</td><td>2.4</td>
-</tr>
-<tr><td colspan="9" class="cat-head">Need-Kriterien</td></tr>
-<tr class="need">
-  <td class="item-cell">kurze Transportwege</td>
-  <td>15%</td><td>1–10</td><td>2</td><td>0.3</td><td>8</td><td>1.2</td><td>5</td><td>0.75</td>
-</tr>
-<tr class="need">
-  <td class="item-cell">gutes Management vor Ort</td>
-  <td>15%</td><td>1–10</td><td>4</td><td>0.6</td><td>8</td><td>1.2</td><td>3</td><td>0.45</td>
-</tr>
-<tr class="need">
-  <td class="item-cell">einfache Kommunikation</td>
-  <td>15%</td><td>1–10</td><td>4</td><td>0.6</td><td>8</td><td>1.2</td><td>5</td><td>0.75</td>
-</tr>
-<tr class="need">
-  <td class="item-cell">moderne Produktionsmittel</td>
-  <td>15%</td><td>1–10</td><td>6</td><td>0.9</td><td>9</td><td>1.35</td><td>3</td><td>0.45</td>
-</tr>
-<tr><td colspan="9" class="cat-head">Nice-to-have-Kriterien</td></tr>
-<tr class="nth">
-  <td class="item-cell">bereits Erfahrung mit Kultur</td>
-  <td>5%</td><td>1–5</td><td>1</td><td>0.05</td><td>5</td><td>0.25</td><td>2</td><td>0.1</td>
-</tr>
-<tr class="nth">
-  <td class="item-cell">schöne, werbemässig verwendbare Lokalität</td>
-  <td>5%</td><td>1–5</td><td>3</td><td>0.15</td><td>5</td><td>0.25</td><td>2</td><td>0.1</td>
-</tr>
-<tr class="total-row">
-  <td><strong>Total</strong></td>
-  <td>130%</td><td></td><td></td><td><strong>7.40</strong></td><td></td><td><strong>8.15</strong></td><td></td><td><strong>7.10</strong></td>
-</tr>
-</table>
-</div>`;
+  return '<div class="tbl-scroll"><table class="nwa-table"><tr><th rowspan="2">Kriterien</th><th rowspan="2">Gewicht</th><th rowspan="2">Bew.-Skala</th><th colspan="2" style="background:#1a5c9e">China</th><th colspan="2" style="background:#1a5c9e">Slowakei</th><th colspan="2" style="background:#1a5c9e">Ukraine</th></tr><tr><th>Bew.</th><th>&times;Gew.</th><th>Bew.</th><th>&times;Gew.</th><th>Bew.</th><th>&times;Gew.</th></tr><tr><td colspan="9" class="cat-head">Must-Kriterien</td></tr><tr class="must"><td class="item-cell">Kostensenkung &gt;30%</td><td>30%</td><td>1-10</td><td>10</td><td>3</td><td>5</td><td>1.5</td><td>7</td><td>2.1</td></tr><tr class="must"><td class="item-cell">Kapitalbedarf &lt; 2 Mio CHF</td><td>30%</td><td>1-10</td><td>6</td><td>1.8</td><td>4</td><td>1.2</td><td>8</td><td>2.4</td></tr><tr><td colspan="9" class="cat-head">Need-Kriterien</td></tr><tr class="need"><td class="item-cell">kurze Transportwege</td><td>15%</td><td>1-10</td><td>2</td><td>0.3</td><td>8</td><td>1.2</td><td>5</td><td>0.75</td></tr><tr class="need"><td class="item-cell">gutes Management vor Ort</td><td>15%</td><td>1-10</td><td>4</td><td>0.6</td><td>8</td><td>1.2</td><td>3</td><td>0.45</td></tr><tr class="need"><td class="item-cell">einfache Kommunikation</td><td>15%</td><td>1-10</td><td>4</td><td>0.6</td><td>8</td><td>1.2</td><td>5</td><td>0.75</td></tr><tr class="need"><td class="item-cell">moderne Produktionsmittel</td><td>15%</td><td>1-10</td><td>6</td><td>0.9</td><td>9</td><td>1.35</td><td>3</td><td>0.45</td></tr><tr><td colspan="9" class="cat-head">Nice-to-have</td></tr><tr class="nth"><td class="item-cell">Erfahrung mit Kultur</td><td>5%</td><td>1-5</td><td>1</td><td>0.05</td><td>5</td><td>0.25</td><td>2</td><td>0.1</td></tr><tr class="nth"><td class="item-cell">werbem. verwendbare Lokalität</td><td>5%</td><td>1-5</td><td>3</td><td>0.15</td><td>5</td><td>0.25</td><td>2</td><td>0.1</td></tr><tr class="total-row"><td><strong>Total</strong></td><td>130%</td><td></td><td></td><td><strong>7.40</strong></td><td></td><td><strong>8.15</strong></td><td></td><td><strong>7.10</strong></td></tr></table></div>';
 }
-
 function renderProcessDiagram(){
-const box=(n,cls='')=>`<div class="pbox ${cls}">${n}</div>`;
-const arr=`<span class="parr">→</span>`;
-return `<div class="proc-diagram">
-<div class="proc-row"><span class="proc-label proc-lbl-orig">Ursprüngliche Prozesskette</span><div class="proc-boxes">${box(1)}${arr}${box(2)}${arr}${box(3)}${arr}${box(4)}</div></div>
-<div class="proc-row"><span class="proc-label proc-lbl-weg">Weglassen</span><div class="proc-boxes">${box(1)}${arr}${box(2)}${arr}${box(4)}</div></div>
-<div class="proc-row"><span class="proc-label proc-lbl-hinz">Hinzufügen</span><div class="proc-boxes">${box(1)}${arr}${box(2)}${arr}${box(3)}${arr}${box(4)}${arr}${box(5,'pbox-new')}</div></div>
-<div class="proc-row"><span class="proc-label proc-lbl-zus">Zusammenfassen</span><div class="proc-boxes">${box(1)}${arr}<div class="pbox merged">2+3</div>${arr}${box(4)}</div></div>
-<div class="proc-row"><span class="proc-label proc-lbl-auf">Aufteilen</span><div class="proc-boxes">${box(1)}${arr}${box('2a')}${arr}${box('2b')}${arr}${box(3)}${arr}${box(4)}</div></div>
-<div class="proc-row"><span class="proc-label proc-lbl-par">Parallelisieren</span><div class="proc-boxes">${box(1)}${arr}<div class="proc-parallel">${box(2)}${box(3)}</div>${arr}${box(4)}</div></div>
-<div class="proc-row"><span class="proc-label proc-lbl-rei">Reihenfolge ändern</span><div class="proc-boxes">${box(1)}${arr}${box(3,'pbox-new')}${arr}${box(2,'pbox-new')}${arr}${box(4)}</div></div>
-</div>`;
+  var b=function(n,c){return '<div class="pbox '+(c||'')+'">'+n+'</div>';};
+  var a='<span class="parr">→</span>';
+  return '<div class="proc-diagram">'
+    +'<div class="proc-row"><span class="proc-label proc-lbl-orig">Ursprüngliche Prozesskette</span><div class="proc-boxes">'+b(1)+a+b(2)+a+b(3)+a+b(4)+'</div></div>'
+    +'<div class="proc-row"><span class="proc-label proc-lbl-weg">Weglassen</span><div class="proc-boxes">'+b(1)+a+b(2)+a+b(4)+'</div></div>'
+    +'<div class="proc-row"><span class="proc-label proc-lbl-hinz">Hinzufügen</span><div class="proc-boxes">'+b(1)+a+b(2)+a+b(3)+a+b(4)+a+b(5,'pbox-new')+'</div></div>'
+    +'<div class="proc-row"><span class="proc-label proc-lbl-zus">Zusammenfassen</span><div class="proc-boxes">'+b(1)+a+'<div class="pbox merged">2+3</div>'+a+b(4)+'</div></div>'
+    +'<div class="proc-row"><span class="proc-label proc-lbl-auf">Aufteilen</span><div class="proc-boxes">'+b(1)+a+b('2a')+a+b('2b')+a+b(3)+a+b(4)+'</div></div>'
+    +'<div class="proc-row"><span class="proc-label proc-lbl-par">Parallelisieren</span><div class="proc-boxes">'+b(1)+a+'<div class="proc-parallel">'+b(2)+b(3)+'</div>'+a+b(4)+'</div></div>'
+    +'<div class="proc-row"><span class="proc-label proc-lbl-rei">Reihenfolge ändern</span><div class="proc-boxes">'+b(1)+a+b(3,'pbox-new')+a+b(2,'pbox-new')+a+b(4)+'</div></div>'
+    +'</div>';
 }
-
 function renderOrgChart(){
-return `<div class="org-wrap"><div class="org-chart">
-<div class="org-box mgmt">Management</div>
-<div class="org-connector">↓</div>
-<div class="org-box ceo" style="width:220px;margin:0 auto 4px">CEO<br>Swiss Security Solutions</div>
-<div style="display:flex;gap:8px;margin-top:6px">
-  <div style="flex:0 0 auto;width:195px">
-    <div class="org-section-label">🔷 4 Zentrale Dienste (Stabsstellen)</div>
-    <div class="org-section">
-      <div class="org-box staff" style="margin-bottom:4px">Assistenz, Finance,<br>Personalmanagement</div>
-      <div class="org-box staff" style="margin-bottom:4px">Sales, Calculation,<br>Pricing &amp; Transition Mgmt</div>
-      <div class="org-box staff" style="margin-bottom:4px">Business Development,<br>Marketing &amp; PR</div>
-      <div class="org-box staff">Security Operations,<br>Supervision &amp; QM</div>
-    </div>
-  </div>
-  <div style="flex:1">
-    <div class="org-section-label">🟢 Linienbereiche</div>
-    <div class="org-section">
-      <div style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:4px">
-        <div class="org-box line">Security Mngmt<br>(CSO) Services</div>
-        <div>
-          <div class="org-box line">Security Services</div>
-          <div style="margin-top:3px;padding-left:8px">
-            <div class="org-box sub" style="margin-bottom:3px">Investigation Services<br>(Ermittlungen)
-              <div style="padding-left:6px;margin-top:3px">
-                <div class="org-box subsub" style="margin-bottom:2px">Intelligence Services</div>
-                <div class="org-box subsub">Cyber Crime Investigations</div>
-              </div>
-            </div>
-            <div class="org-box sub">Protection Services<br>(Personenschutz)
-              <div style="padding-left:6px;margin-top:3px">
-                <div class="org-box subsub" style="margin-bottom:2px">Executive Protection Services</div>
-                <div class="org-box subsub">Close Protection Services</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="org-box line">Safety Services</div>
-        <div class="org-box line">Security Consulting</div>
-        <div>
-          <div class="org-box line">Audit of FM, FS, IFS</div>
-          <div style="padding-left:8px;margin-top:3px">
-            <div class="org-box sub" style="margin-bottom:3px">Security &amp; Alarm Systems</div>
-            <div class="org-box sub" style="margin-bottom:3px">Audit of External Security Services</div>
-            <div class="org-box sub">CCTV Security Systems</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div></div>`;
+  return '<div class="org-wrap"><div class="org-chart"><div class="org-box mgmt">Management</div><div class="org-connector">↓</div><div class="org-box ceo" style="width:220px;margin:0 auto 4px">CEO<br>Swiss Security Solutions</div><div style="display:flex;gap:8px;margin-top:6px"><div style="flex:0 0 auto;width:195px"><div class="org-section-label">◆ 4 Zentrale Dienste</div><div class="org-section"><div class="org-box staff" style="margin-bottom:4px">Assistenz, Finance, Personal</div><div class="org-box staff" style="margin-bottom:4px">Sales, Calculation, Pricing</div><div class="org-box staff" style="margin-bottom:4px">Business Development, Marketing</div><div class="org-box staff">Security Operations, QM</div></div></div><div style="flex:1"><div class="org-section-label">◆ Linienbereiche</div><div class="org-section"><div style="display:flex;gap:4px;flex-wrap:wrap"><div class="org-box line">Security Mgmt</div><div><div class="org-box line">Security Services</div><div style="padding-left:8px;margin-top:3px"><div class="org-box sub" style="margin-bottom:3px">Investigation Services<div style="padding-left:6px;margin-top:2px"><div class="org-box subsub" style="margin-bottom:2px">Intelligence</div><div class="org-box subsub">Cyber Crime</div></div></div><div class="org-box sub">Protection Services<div style="padding-left:6px;margin-top:2px"><div class="org-box subsub" style="margin-bottom:2px">Executive Protection</div><div class="org-box subsub">Close Protection</div></div></div></div></div><div class="org-box line">Safety Services</div><div class="org-box line">Consulting</div></div></div></div></div></div></div>';
 }
 
-// ==========================================================
-// QUESTION DATA
-// ==========================================================
-const questions = [
+// ── QUESTIONS ──────────────────────────────────────────
+var questions = [
 {id:1,title:"1. Nutzwertanalyse [ID: 1612]",type:"multiple",
-context:`<strong>Die folgende Aufgabe bezieht sich auf die Art und Weise, wie die Nutzwertanalyse zur Entscheidungsfindung eingesetzt wird. Es geht nicht darum, ob Sie persönlich den einzelnen Kriterien, Alternativen oder Bewertungen zustimmen!</strong><br><br>
-Die Horwer Elektrogeräte AG überlegt, einen Teil der Produktion ins Ausland zu verlagern. Als "Must"-Kriterien werden von der Geschäftsleitung definiert, dass die Kostensenkung gegenüber der Produktion in der Schweiz mindestens 30% betragen muss und dass der Kapitalbedarf für den Kauf einer entsprechenden Firma im jeweiligen Land inklusive Projektkosten nicht mehr als CHF 2'000'000.– beanspruchen darf.<br><br>
-Walter Meier erstellt am Wochenende zu Hause folgende Nutzwertanalyse, die er am Montagmorgen der Geschäftsleitung präsentiert:`,
+context:"<strong>Die folgende Aufgabe bezieht sich auf die Art und Weise, wie die Nutzwertanalyse zur Entscheidungsfindung eingesetzt wird.</strong><br><br>Die Horwer Elektroger&auml;te AG &uuml;berlegt, einen Teil der Produktion ins Ausland zu verlagern. Als Must-Kriterien werden definiert: Kostensenkung &ge;30% und Kapitalbedarf &le; CHF 2 Mio. Walter Meier erstellt folgende Nutzwertanalyse:",
 image:"nwa",
-imageAfter:`Auf Basis dieser Nutzwertanalyse entscheidet die Geschäftsleitung, die Produktion in die Slowakei zu verlagern. Die (länderspezifischen) Projektkosten für die Verlagerung in die Slowakei in Höhe von CHF 200'000.– werden zusätzlich zum Kaufpreis der Firma in Slowakei in Höhe von CHF 2'100'000.– bewilligt.`,
-text:"Die untenstehenden Aussagen beziehen sich auf die oben beschriebene Nutzwertanalyse und den Prozess ihrer Erstellung und ihres Einsatzes. Sie erhalten Punkte für das Markieren von korrekten Aussagen und für das Nicht-Markieren von falschen Aussagen.",
-options:["Man hätte die Must-Kriterien zusätzlich noch einmal als Need-Kriterien aufführen sollen.","Das Erstellen der Nutzwertanalyse hätte in der Gruppe erfolgen sollen, nicht in einer Einzelaktion.","Die Alternative, nicht zu verlagern, fehlt.","Der Entscheid für die Slowakei ist folgerichtig.","Zwei Bewertungsskalen (1-10 und 1-5) zu verwenden, ist kein Problem.","Die einbezogenen Kriterien-Kategorien (must, need, nice-to-have) sind richtig in die Nutzwertanalyse eingeflossen.","1-10 ist eine sehr gute Bewertungsskala.","Muss Kriterien müssen wie hier auf der Bewertungsskala bewertet werden.","Dass die Summe der Gewichte höher ist als 100% ist kein Problem.","Die Projektkosten sollten in der Nutzwertanalyse mit einbezogen werden."],
-correct:[1,2,9]},
+imageAfter:"Auf Basis dieser Nutzwertanalyse entscheidet die GL, die Produktion in die Slowakei zu verlagern. Projektkosten Slowakei CHF 200'000 + Kaufpreis CHF 2'100'000 werden bewilligt.",
+text:"Welche Aussagen zur Nutzwertanalyse sind korrekt?",
+options:["Man h&auml;tte Must-Kriterien zus&auml;tzlich als Need-Kriterien auff&uuml;hren sollen.","Das Erstellen h&auml;tte in der Gruppe erfolgen sollen, nicht als Einzelaktion.","Die Alternative, nicht zu verlagern, fehlt.","Der Entscheid f&uuml;r die Slowakei ist folgerichtig.","Zwei Bewertungsskalen (1-10 und 1-5) zu verwenden, ist kein Problem.","Die einbezogenen Kriterien-Kategorien sind richtig eingeflossen.","1-10 ist eine sehr gute Bewertungsskala.","Must-Kriterien m&uuml;ssen wie hier auf der Bewertungsskala bewertet werden.","Dass die Summe der Gewichte &uuml;ber 100% ist, ist kein Problem.","Die Projektkosten sollten in der NWA einbezogen werden."],
+correct:[1,2]},
 
 {id:2,title:"2. Projektorganisation [ID: 1618]",type:"multiple",
-text:"Warum scheitern Projekte? Markieren Sie die 6 wichtigsten Gründe.",
-options:["keine / zu wenig Meilensteine","unklare oder zu hohe Anforderungen, Ziele und Erwartungen","Politik, Bereichsegoismus, Kompetenzstreitigkeiten","kein formeller Steuerungsausschuss","mangelnde Managementunterstützung","Fehler im Projektmanagement","fehlendes Funktionsdiagramm","zu geringes Budget","Projektänderungen"],
-correct:[0,1,2,4,5,8]},
+text:"Warum scheitern Projekte? Markieren Sie die 6 wichtigsten Gr&uuml;nde.",
+options:["keine / zu wenig Meilensteine","unklare oder zu hohe Anforderungen, Ziele und Erwartungen","Politik, Bereichsegoismus, Kompetenzstreitigkeiten","kein formeller Steuerungsausschuss","mangelnde Managementunterst&uuml;tzung","Fehler im Projektmanagement","fehlendes Funktionendiagramm","zu geringes Budget","Projekt&auml;nderungen"],
+correct:[1,2,4,5,7,8]},
 
-{id:3,title:"3. Selektion: Verhaltensdreieckfragen – vollständig und korrekt [ID: 1626]",type:"multiple",
-text:"Welche Verhaltensdreiecksfragen sind vollständig und korrekt?",
-options:["Schildern Sie uns eine Situation in der Sie unter Druck arbeiten mussten. Wie sind Sie vorgegangen? Was war das Ergebnis?","Wie würden Sie sich verhalten, wenn Sie unter Druck arbeiten müssten? Was wäre ihr Verhalten? Wie würde sich dies auswirken?","Mussten Sie schon mal unter Druck arbeiten? Wie war das für Sie? Was war das Ergebnis?","Wann haben sie zuletzt eine Situation erlebt, in der Sie unter Druck arbeiten mussten. Wie sind Sie dort vorgegangen?"],
+{id:3,title:"3. Verhaltensdreieckfragen [ID: 1626]",type:"multiple",
+text:"Welche Verhaltensdreiecksfragen sind vollst&auml;ndig und korrekt?",
+options:["Schildern Sie uns eine Situation in der Sie unter Druck arbeiten mussten. Wie sind Sie vorgegangen? Was war das Ergebnis?","Wie w&uuml;rden Sie sich verhalten, wenn Sie unter Druck arbeiten m&uuml;ssten? Was w&auml;re ihr Verhalten? Wie w&uuml;rde sich dies auswirken?","Mussten Sie schon mal unter Druck arbeiten? Wie war das f&uuml;r Sie? Was war das Ergebnis?","Wann haben sie zuletzt eine Situation erlebt, in der Sie unter Druck arbeiten mussten. Wie sind Sie dort vorgegangen?"],
 correct:[0]},
 
 {id:4,title:"4. Transaktionsanalyse [ID: 1638]",type:"single",
-context:"In der Einarbeitungszeit stellt Konrad Hubers Vorgesetzter fest, dass Huber sich durch hohes Tempo und Dynamik auszeichnet. Er ist sehr stressresistent und arbeitet gerne und gut unter Zeitdruck.",
-text:"Was ist Huber's Antreiber aus der Transaktionsanalyse?",
+context:"In der Einarbeitungszeit stellt Konrad Hubers Vorgesetzter fest, dass Huber sich durch hohes Tempo und Dynamik auszeichnet. Er ist sehr stressresistent und arbeitet gerne unter Zeitdruck.",
+text:"Was ist Hubers Antreiber aus der Transaktionsanalyse?",
 options:["mach es allen Recht","sei stark","sei perfekt","mach schnell","streng Dich an"],
 correct:3},
 
-{id:5,title:"5. Development Center – Übung \"More Love\" [ID: 1583]",type:"freetext",
-text:"Im Development Center haben wir die Übung \"More Love\" durchgeführt (= blinde Teilnehmer schreiben Wörter mit Seilen). Nennen Sie mindestens zwei Aspekte dieser Übung, die Aufschluss über das Verhalten von Einzelnen oder der Gruppe geben können. Erläutern Sie kurz.",
-modelAnswer:`<strong>Aspekt 1 – Einschränkung eines Sinnes / Abhängigkeit:</strong> Durch das Ausblenden des Sehsinns entsteht Abhängigkeit und eine ungewohnte Situation. Dies bringt natürlicheres Gruppenverhalten hervor – z.B. das "angepasste Kind-Ich", das sich einem autoritären Führungsstil unterwirft, oder Personen, die aktiv Orientierung suchen.<br><br>
-<strong>Aspekt 2 – Wer übernimmt die Führung und wie:</strong> Die Übung zeigt deutlich, wer die Initiative ergreift und welchen Führungsstil diese Person wählt. Da Motivation vorhanden ist, aber kein Know-how über die Situation, ist ein autoritärer Führungsstil situationsgerecht. Dies lässt sich gut beobachten und auswerten.`},
+{id:5,title:"5. Development Center &ndash; &laquo;More Love&raquo; [ID: 1583]",type:"freetext",
+text:"Im Development Center haben wir die &Uuml;bung &laquo;More Love&raquo; durchgef&uuml;hrt (= blinde Teilnehmer schreiben W&ouml;rter mit Seilen). Nennen Sie mindestens zwei Aspekte, die Aufschluss &uuml;ber das Verhalten geben k&ouml;nnen.",
+modelAnswer:"<strong>Aspekt 1 &ndash; Einschr&auml;nkung eines Sinnes:</strong> Durch das Ausblenden des Sehsinns entsteht Abh&auml;ngigkeit und eine ungew&uuml;nschte Situation. Nat&uuml;rlicheres Gruppenverhalten wird sichtbar.<br><br><strong>Aspekt 2 &ndash; Wer &uuml;bernimmt die F&uuml;hrung:</strong> Zeigt, wer Initiative ergreift und welchen F&uuml;hrungsstil diese Person w&auml;hlt. Da Motivation vorhanden, aber kein Know-how, ist autorit&auml;rer Stil situationsgerecht."},
 
 {id:6,title:"6. Arbeitszeit; Pausenzeiten [ID: 1577]",type:"fillin-number",
-text:"Bitte fügen Sie die korrekte Zahl ein.",
+text:"Bitte f&uuml;gen Sie die korrekte Zahl ein.",
 sentences:[
-  {before:"Bei mehr als 5,5 Arbeitsstunden muss die gesamte Pausenzeit mindestens ",after:" min betragen.",correct:"15"},
-  {before:"Bei mehr als 7 Arbeitsstunden muss die gesamte Pausenzeit mindestens ",after:" min betragen.",correct:"30"},
-  {before:"Bei mehr als 9,5 Arbeitsstunden muss die gesamte Pausenzeit mindestens ",after:" min betragen.",correct:"60"}
+  {before:"Bei mehr als 5,5 Arbeitsstunden: ",after:" min Pause",correct:"15"},
+  {before:"Bei mehr als 7 Arbeitsstunden: ",after:" min Pause",correct:"30"},
+  {before:"Bei mehr als 9 Arbeitsstunden: ",after:" min Pause",correct:"60"}
 ]},
 
 {id:7,title:"7. Mitarbeiterbeurteilung [ID: 1606]",type:"matching",
-text:"Ordnen Sie bitte die folgenden Aussagen den verschiedenen Formen einer Mitarbeiterbeurteilung zu:",
-leftItems:["Vorgesetztenbeurteilung","Beurteilung durch die/den nächsthöheren Vorgesetzten","Beurteilung durch interne und externe Kunden"],
-rightItems:["Führt zu differenzierter Beurteilung durch Vorgesetzte und Kollegen.","Eher sporadisch als Beurteilungs-Ansatz für Führungskräfte.","schwierig, Beurteiler zu motivieren."],
+text:"Ordnen Sie die Aussagen den Beurteilungsformen zu:",
+leftItems:["Vorgesetztenbeurteilung","Beurteilung durch n&auml;chsth&ouml;heren Vorgesetzten","Beurteilung durch interne und externe Kunden"],
+rightItems:["F&uuml;hrt zu differenzierter Beurteilung durch Vorgesetzte und Kollegen.","Eher sporadisch als Beurteilungs-Ansatz f&uuml;r F&uuml;hrungskr&auml;fte.","schwierig, Beurteiler zu motivieren."],
 correct:[1,0,2]},
 
-{id:8,title:"8. Grundlagen: Kosten Gewinnung [ID: 1596]",type:"multiple",
-text:"Welche der folgenden Aussagen zur Personalgewinnung sind zutreffend?",
-options:["Es entstehen Kosten für die Werbe- und Auswahlaktion.","Die Personalgewinnung kostet ein Jahressalär eines Mitarbeitenden","Die Personalgewinnung wird in Zukunft proaktiver gestaltet werden müssen.","Aufgrund der hohen Kosten von zusätzlichen Assessments sollten solche möglichst vermieden werden und man sollte vorwiegend auf das solide Urteil der Personalverantwortlichen und der Linie abstellen."],
+{id:8,title:"8. Kosten Gewinnung [ID: 1596]",type:"multiple",
+text:"Welche Aussagen zur Personalgewinnung sind zutreffend?",
+options:["Es entstehen Kosten f&uuml;r die Werbe- und Auswahlaktion.","Die Personalgewinnung kostet ein Jahressalär eines Mitarbeitenden","Die Personalgewinnung wird in Zukunft proaktiver gestaltet werden m&uuml;ssen.","Aufgrund hoher Kosten von Assessments sollte man diese vermeiden."],
 correct:[0,2]},
 
 {id:9,title:"9. Egogramm [ID: 1587]",type:"multiple",
 text:"Welche Aussage/n ist/sind korrekt?",
-options:["Personen mit hohem kritischem Eltern-Ich sind oft durchsetzungsstark.","Einzelne Ich-Zustände sind definitiv besser als andere.","Personen mit hohem stützendem Eltern Ich tendieren zu einem karitativen Führungsstil.","Eine Person mit einem hohen natürlichen Kindheits-Ich gibt i.d.R. eine sehr verlässliche Führungskraft ab."],
+options:["Personen mit hohem kritischem Eltern-Ich sind oft durchsetzungsstark.","Einzelne Ich-Zust&auml;nde sind definitiv besser als andere.","Personen mit hohem st&uuml;tzendem Eltern-Ich tendieren zu einem karitativen F&uuml;hrungsstil.","Eine Person mit hohem nat&uuml;rlichen Kindheits-Ich gibt i.d.R. eine sehr verl&auml;ssliche F&uuml;hrungskraft ab."],
 correct:[0,2]},
 
-{id:10,title:"10. Grundlagen: Gesamtprozess Rekrutierung [ID: 1594]",type:"ordering",
-text:"Bringen Sie bitte die Teilprozesse der Rekrutierung in die richtige Reihenfolge.",
-items:["Einführung","Selektion","Bedarfsermittlung","Werbung"],
-correct:["Bedarfsermittlung","Werbung","Selektion","Einführung"]},
+{id:10,title:"10. Gesamtprozess Rekrutierung [ID: 1594]",type:"ordering",
+text:"Bringen Sie die Teilprozesse der Rekrutierung in die richtige Reihenfolge.",
+items:["Einf&uuml;hrung","Selektion","Bedarfsermittlung","Werbung"],
+correct:["Bedarfsermittlung","Werbung","Selektion","Einf&uuml;hrung"]},
 
-{id:11,title:"11. Selektion – Vorselektion; Arbeitszeugnisinterpretation [ID: 1628]",type:"multiple",
-text:"Folgendes ist bei der Arbeitszeugnisinterpretation zu beachten/zu befolgen:",
-options:["Bei Unklarheiten sollte man lieber direkt nochmals beim Zeugnisabfasser nachfragen.","Arbeitszeugnisse liefern immer eine klare Beurteilungsgrundlage.","Es ist wichtig, was im Zeugnis steht.","Ein kurzes Zeugnis ist ein schlechtes Zeugnis.","Ein Zeugnis sollte auf jeden Fall wohlwollend abgefasst sein.","Es ist wichtig, was nicht im Zeugnis steht."],
-correct:[3,4,5]},
+{id:11,title:"11. Arbeitszeugnisinterpretation [ID: 1628]",type:"multiple",
+text:"Folgendes ist bei der Arbeitszeugnisinterpretation zu beachten:",
+options:["Bei Unklarheiten sollte man lieber direkt beim Zeugnisabfasser nachfragen.","Arbeitszeugnisse liefern immer eine klare Beurteilungsgrundlage.","Es ist wichtig, was im Zeugnis steht.","Ein kurzes Zeugnis ist ein schlechtes Zeugnis.","Ein Zeugnis sollte auf jeden Fall wohlwollend abgefasst sein.","Es ist wichtig, was nicht im Zeugnis steht."],
+correct:[0,2,4,5]},
 
 {id:12,title:"12. Prozessoptimierung [ID: 1620]",type:"matching",
-context:"Die PROZESS AG übernimmt die Endmontage von elektrischen Geräten. Es gibt verschiedene Probleme, die die Effektivität und Effizienz des Montageprozesses beeinträchtigen. Die grundsätzlichen Möglichkeiten zur Prozessoptimierung sehen Sie in der folgenden Abbildung:",
+context:"Die PROZESS AG &uuml;bernimmt die Endmontage von elektrischen Ger&auml;ten. Die grunds&auml;tzlichen M&ouml;glichkeiten zur Prozessoptimierung:",
 image:"process",
-text:"Ordnen Sie die nachfolgenden Probleme der PROZESS AG der richtigen Optimierungsmöglichkeit zu:",
-leftItems:["Weglassen","Hinzufügen","Zusammenfassen","Aufteilen","Parallelisieren","Reihenfolge ändern"],
-rightItems:["Die Transportwege zwischen den Montageschritten sind weit.","Die Kapazität für Montageschritt 7 reicht nicht aus. In Schritt 8 erfolgt eine von mehreren Qualitätskontrollen im Gesamtprozess.","Nach Montageschritt 4 an Arbeitsplatz D erfolgt in Schritt 5 die Qualitätskontrolle an Arbeitsplatz G.","In Montageschritt werden die Komponenten Ka, Kb und Kc zusammengesteckt und dann im Gehäuse G4 montiert. Die Betriebsmittel für die beiden Tätigkeiten sind sehr unterschiedlich.","In Montageschritt 11 wird Baugruppe B4 zusammengebaut, in Schritt 12 Baugruppe B5. In Schritt 13 werden B4 und B5 weiter verwendet.","Montageschritt 9 braucht zu lange, da fehlerhafte Komponenten K14 in Baugruppe B76 eingebaut, dann wieder ausgebaut und ersetzt werden müssen."],
-correct:[0,1,2,3,4,5]},
+text:"Ordnen Sie die Probleme der richtigen Optimierungsm&ouml;glichkeit zu:",
+leftItems:["Weglassen","Hinzuf&uuml;gen","Zusammenfassen","Aufteilen","Parallelisieren","Reihenfolge &auml;ndern"],
+rightItems:["Die Transportwege zwischen den Montageschritten sind weit.","Die Kapazit&auml;t f&uuml;r Montageschritt 7 reicht nicht aus.","Nach Montageschritt 4 an Arbeitsplatz D erfolgt in Schritt 5 die Qualit&auml;tskontrolle an Arbeitsplatz G.","In Montageschritt werden Komponenten Ka, Kb, Kc zusammengesteckt und im Geh&auml;use G4 montiert. Die Betriebsmittel sind sehr unterschiedlich.","In Montageschritt 11 wird Baugruppe B4 zusammengebaut, in Schritt 12 Baugruppe B5. In Schritt 13 werden B4 und B5 weiter verwendet.","Montageschritt 9 braucht zu lange, da fehlerhafte Komponenten K14 eingebaut, dann wieder ausgebaut und ersetzt werden m&uuml;ssen."],
+correct:[1,5,0,3,4,2]},
 
-{id:13,title:"13. Bedarfsermittlung: Interne Besetzung [ID: 1581]",type:"multiple",
+{id:13,title:"13. Interne Besetzung [ID: 1581]",type:"multiple",
 text:"Was sind die Vorteile einer internen Stellenbesetzung?",
-options:["Aufstiegsmöglichkeiten für interne Mitarbeitende","Kandidat/in und Fähigkeiten sind bekannt","Kandidat/in bringt frischen Wind in die Unternehmung","Kandidat kennt das Unternehmen","Kandidat/in ist oft kurzfristig verfügbar","Personalproblem ist gelöst."],
+options:["Aufstiegsm&ouml;glichkeiten f&uuml;r interne Mitarbeitende","Kandidat/in und F&auml;higkeiten sind bekannt","Kandidat/in bringt frischen Wind in die Unternehmung","Kandidat kennt das Unternehmen","Kandidat/in ist oft kurzfristig verf&uuml;gbar","Personalproblem ist gel&ouml;st."],
 correct:[0,1,3,4]},
 
 {id:14,title:"14. Sitzungsleitung [ID: 1632]",type:"multiple",
-text:"Sitzungen können effizienter und effektiver gemacht werden",
-options:["durch aktives Zuhören nach Rogers","indem man es dem Sitzungsleiter möglichst eigenständig überlässt, unangenehme Charaktere gut zu führen","durch Liefern von Anregungen in der Form von Hypothesen.","durch ausführliche Information während der Sitzung über teilweise ähnliche Situationen in der Vergangenheit, wie diese gelöst wurden und welche Ergebnisse damit erzielt wurden","durch klares kompromissloses Durchsetzen der eigenen Meinung","durch Stehungen um die zur Verfügung stehende Zeit zu begrenzen","durch Einnehmen der Rolle des Fuchses, der überall akribisch nachfragt und unterbricht.","durch gute Vorbereitung"],
+text:"Sitzungen k&ouml;nnen effizienter und effektiver gemacht werden",
+options:["durch aktives Zuh&ouml;ren nach Rogers","indem man es dem Sitzungsleiter m&ouml;glichst eigenst&auml;ndig &uuml;berl&auml;sst, unangenehme Charaktere zu f&uuml;hren","durch Liefern von Anregungen in der Form von Hypothesen","durch ausf&uuml;hrliche Information &uuml;ber &auml;hnliche Situationen in der Vergangenheit","durch klares kompromissloses Durchsetzen der eigenen Meinung","durch Stehungen um die Zeit zu begrenzen","durch Einnehmen der Rolle des Fuchses","durch gute Vorbereitung"],
 correct:[0,2,5,7]},
 
 {id:15,title:"15. Organisationsstruktur [ID: 1614]",type:"multiple",
-context:`Aus der Website von Swiss Security Solutions: Jedes Unternehmen hat Sicherheitsbedarf. Swiss Security Solutions bietet Sicherheitslösungen, Sicherheits- und Ermittlungsdienstleistungen und -systeme zum Schutz von Personen und Unternehmen.<br><br>
-Sie sind ein externer Organisationsberater und werden als Projektleiter von Swiss Security Solutions beigezogen. Sie erhalten als erstes dieses Organigramm:`,
+context:"Sie sind externer Organisationsberater bei Swiss Security Solutions. Sie erhalten dieses Organigramm:",
 image:"orgchart",
-text:"Kreuzen Sie die richtigen Aussagen an und kreuzen Sie die falschen Aussagen nicht an. Beides gibt Punkte.",
-options:["Das Unternehmen ist nach Regionen organisiert.","Die Leitungsspanne des CEO ist eher gross.","Es ist klar, wer in der Geschäftsleitung vertreten ist.","Es gibt drei zentrale Dienste.","Das Unternehmen hat eine Matrix Organisation.","Es gibt vier zentrale Dienste.","Es gibt zwei zentrale Dienste.","Das Unternehmen ist nach Funktionen organisiert.","Es gibt einen zentralen Dienst.","Das Unternehmen ist nach Produkten resp. Dienstleistungen organisiert.","Es gibt eine Sekundärorganisation."],
+text:"Kreuzen Sie die richtigen Aussagen an:",
+options:["Das Unternehmen ist nach Regionen organisiert.","Die Leitungsspanne des CEO ist eher gross.","Es ist klar, wer in der Gesch&auml;ftsleitung vertreten ist.","Es gibt drei zentrale Dienste.","Das Unternehmen hat eine Matrix Organisation.","Es gibt vier zentrale Dienste.","Es gibt zwei zentrale Dienste.","Das Unternehmen ist nach Funktionen organisiert.","Es gibt einen zentralen Dienst.","Das Unternehmen ist nach Produkten resp. Dienstleistungen organisiert.","Es gibt eine Sekund&auml;rorganisation."],
 correct:[1,5,9,10]},
 
-{id:16,title:"16. Arbeitszeit; Mehrarbeit – Anwendungsbeispiel (d) [ID: 1575]",type:"single",
-context:"Frau Müller arbeitet in der Produktion bei einer Papierfabrik. Sie hat einen Arbeitsvertrag mit 40 h pro Woche.",
-text:"Wieviel Überzeitstunden darf Sie insgesamt im Jahr leisten?",
+{id:16,title:"16. Mehrarbeit Anwendungsbeispiel [ID: 1575]",type:"single",
+context:"Frau M&uuml;ller arbeitet in der Produktion bei einer Papierfabrik. Sie hat einen Arbeitsvertrag mit 40 h pro Woche.",
+text:"Wieviel &Uuml;berzeitstunden darf sie insgesamt im Jahr leisten?",
 options:["140 Stunden","170 Stunden"],
-correct:0},
+correct:1},
 
-{id:17,title:"17. Motivation – Selbstbestimmungstheorie [ID: 1610]",type:"multiple",
+{id:17,title:"17. Motivation &ndash; Selbstbestimmungstheorie [ID: 1610]",type:"multiple",
 text:"Die Selbstbestimmungstheorie",
-options:["besagt, dass u.a. auch das befriedigte Bedürfnis nach Kompetenz entscheidend ist für die Motivation der Mitarbeitenden.","erklärt das Zustandekommen der extrinsischen Motivation","weist darauf hin, dass Autonomie der Mitarbeitenden bei der Arbeit wichtig ist"],
+options:["besagt, dass u.a. das befriedigte Bed&uuml;rfnis nach Kompetenz entscheidend ist f&uuml;r die Motivation.","erkl&auml;rt das Zustandekommen der extrinsischen Motivation","weist darauf hin, dass Autonomie der Mitarbeitenden bei der Arbeit wichtig ist"],
 correct:[0,2]},
 
-{id:18,title:"18. Bedarfsermittlung; Funktionendiagramm [ID: 1579]",type:"multiple",
+{id:18,title:"18. Funktionendiagramm [ID: 1579]",type:"multiple",
 text:"Ein Funktionendiagramm",
-options:["bietet Grundlage für den Entscheid, eine Stelle ggf. nur temporär, mit anderen Stellenprozenten oder mit anderem Profil wieder zu besetzen.","ist relativ einfach zu definieren.","hilft, ausgewogen konzipierte Aufgabenpakete zu definieren.","liefert Aussagen über Stellvertretungen.","gibt in Diagrammform Informationen zur hierarchischen Einstufung.","lässt Doppelspurigkeiten in einer Abteilung erkennen."],
-correct:[0,2,5]},
+options:["bietet Grundlage f&uuml;r den Entscheid, eine Stelle ggf. nur tempor&auml;r, mit anderen Stellenprozenten oder mit anderem Profil wieder zu besetzen.","ist relativ einfach zu definieren.","hilft, ausgewogen konzipierte Aufgabenpakete zu definieren.","liefert Aussagen &uuml;ber Stellvertretungen.","gibt in Diagrammform Informationen zur hierarchischen Einstufung.","l&auml;sst Doppelspurigkeiten in einer Abteilung erkennen."],
+correct:[0,2,3,5]},
 
 {id:19,title:"19. Organisationsstruktur [ID: 1616]",type:"tf-matrix",
-text:"Geben Sie für die folgenden Aussagen jeweils an, ob sie zutreffen oder nicht zutreffen.",
-instruction:"Für jede Aussage muss entschieden werden: [zutreffend] oder [nicht zutreffend]",
+text:"Geben Sie an, ob die folgenden Aussagen zutreffen oder nicht zutreffen.",
+instruction:"F&uuml;r jede Aussage: [zutreffend] oder [nicht zutreffend]",
 header:["zutreffend","nicht zutreffend"],
 statements:[
   {text:"Ein Vorteil der Divisionalen Struktur ist die Entlastung der Unternehmensleitung.",correct:0},
@@ -492,177 +478,181 @@ statements:[
   {text:"Ein Nachteil der Divisionalen Struktur ist die Schwierigkeit, Prozesse unternehmensweit einheitlich zu gestalten.",correct:0}
 ]},
 
-{id:20,title:"20. Development Center – Übung Performance Puzzle [ID: 1585]",type:"freetext",
-text:"Im Development Center haben wir die Übung \"Performance Puzzle\" durchgeführt. Welches Verhalten bei Einzelnen oder Teams liess sich an dieser Übung gut beobachten? Erläutern Sie kurz zwei Beispiele.",
-modelAnswer:`<strong>Beispiel 1 – «Mach es allen recht»-Verhalten:</strong> Wiederholtes Nachfragen in der Gruppe, ob jedem die zugeordnete Aufgabe passt. Die betreffende Person hat hauptsächlich das Ziel, es allen recht zu machen – auf Kosten der Effizienz.<br><br>
-<strong>Beispiel 2 – Laissez-faire Führungsstil:</strong> Bei den kleinen, klar abgegrenzten Aufgabenpaketen hatte jede Person hohe Expertise und am Ende auch die Motivation, die Zeit zu optimieren. Kaum Führung war nötig – ein Laissez-faire-Stil passte perfekt, da alle Mitarbeitenden kompetent und motiviert waren.`},
+{id:20,title:"20. Development Center &ndash; Performance Puzzle [ID: 1585]",type:"freetext",
+text:"Im Development Center haben wir die &Uuml;bung &laquo;Performance Puzzle&raquo; durchgef&uuml;hrt. Welches Verhalten liess sich gut beobachten? Erl&auml;utern Sie kurz zwei Beispiele.",
+modelAnswer:"<strong>Beispiel 1 &ndash; &laquo;Mach es allen recht&raquo;:</strong> Wiederholtes Nachfragen, ob jedem die Aufgabe passt. Auf Kosten der Effizienz.<br><br><strong>Beispiel 2 &ndash; Laissez-faire F&uuml;hrungsstil:</strong> Bei klar abgegrenzten Aufgabenpaketen mit kompetenten Mitarbeitenden war kaum F&uuml;hrung n&ouml;tig."},
 
-{id:21,title:"21. Verhaltensökonomische Aspekte der Führung [ID: 1646]",type:"single",
-context:"Sie planen die Markteinführung eines neuen Produktes. Das Produkt und der Markt ist auch für Ihr Unternehmen neu und es liegen keine Erfahrungszahlen vor. Eine Marketingstudie hat ergeben, dass Ihr Absatz zwischen 20'000 und 30'000 Stück liegen wird. Um eine etwas genauere Plangrösse zu erhalten, rufen Sie alle Ihre Verkäufer zusammen und erzählen zur Einführung von der letzten Markteinführung (eines anderen Produktes), bei der Ihr Unternehmen einen Absatz von 300'000 Stück erzielen konnte. Ihre Verkäufer schätzen jetzt den Absatz des neuen Produktes.",
-text:"Wie hoch wird im Normalfall der Durchschnitt dieser Schätzungen sein (Ankereffekt)?",
-options:["zwischen 27'001 und 30'000 Stück","zwischen 25'001 und 27'000 Stück","zwischen 23'001 und 25'000 Stück","zwischen 20'000 und 23'000 Stück"],
+{id:21,title:"21. Verhaltens&ouml;konomie &ndash; Ankereffekt [ID: 1646]",type:"single",
+context:"Sie planen eine Markteinf&uuml;hrung. Eine Studie hat ergeben, dass Ihr Absatz zwischen 20'000 und 30'000 St&uuml;ck liegen wird. Zur Einf&uuml;hrung erz&auml;hlen Sie von einer fr&uuml;heren Markteinf&uuml;hrung mit 300'000 St&uuml;ck. Ihre Verk&auml;ufer sch&auml;tzen jetzt den Absatz.",
+text:"Wie hoch wird im Normalfall der Durchschnitt dieser Sch&auml;tzungen sein (Ankereffekt)?",
+options:["zwischen 27'001 und 30'000 St&uuml;ck","zwischen 25'001 und 27'000 St&uuml;ck","zwischen 23'001 und 25'000 St&uuml;ck","zwischen 20'000 und 23'000 St&uuml;ck"],
 correct:0},
 
-{id:22,title:"22. Verhaltensökonomische Aspekte der Führung [ID: 1642]",type:"single",
+{id:22,title:"22. Verhaltens&ouml;konomie [ID: 1642]",type:"single",
 text:"Menschen verhalten sich und entscheiden immer rational und unterliegen keinerlei Wahrnehmungs- oder Denkfehlern.",
 options:["richtig","falsch"],
 correct:1},
 
 {id:23,title:"23. Transaktionsanalyse [ID: 1636]",type:"matching",
-context:"Konrad Huber tritt seine neue Stelle in der Entwicklungsabteilung der Horwer Elektrogeräte AG an. Er wurde vor allen Dingen aus den Bewerbern insbesondere deshalb ausgewählt, weil er gerne phantasievoll, neugierig und offen ist. Gerade seine Kreativität und Impulsivität soll mithelfen, neue Produktideen zu entwickeln. Da diese Eigenschaften genau ins Profil passten, wurde Hubers mangelnde Anpassungsfähigkeit und Kompromisslosigkeit als Positivum gewertet. Hubers geringe Orientierung an Normen und Traditionen und seine Nicht-Beachtung von Regeln wurden eher als förderlich für den kreativen Prozess gewertet. Huber ist durchaus in der Lage, zu unterstützen und zeigt auch eine gewisse Hilfsbereitschaft gegenüber seinen Mitarbeitern, aber diese Charakteristika sind nur mittel ausgeprägt, ebenso wie seine Einstellung zu Planung und der Wert, den er Fakten beimisst.",
-text:"Ordnen Sie die Ich-Zustände dem Ausprägungsgrad zu:",
-leftItems:["stark ausgeprägt","mittel ausgeprägt","mittel ausgeprägt","schwach ausgeprägt","schwach ausgeprägt"],
-rightItems:["Natürliches Kindheits-Ich","Kritisches Eltern-Ich","Stützendes Eltern-Ich","Erwachsenen-Ich","Angepasstes Kindheits-Ich"],
+context:"Konrad Huber wurde ausgew&auml;hlt, weil er phantasievoll, neugierig und offen ist. Seine Kreativit&auml;t und Impulsivit&auml;t soll neue Produktideen entwickeln. Mangelnde Anpassungsf&auml;higkeit wurde als Positivum gewertet. Er zeigt eine gewisse Hilfsbereitschaft, aber diese ist nur mittel ausgepr&auml;gt, ebenso wie seine Orientierung an Planung und Fakten.",
+text:"Ordnen Sie die Ich-Zust&auml;nde dem Auspr&auml;gungsgrad zu:",
+leftItems:["stark ausgepr&auml;gt","mittel ausgepr&auml;gt","mittel ausgepr&auml;gt","schwach ausgepr&auml;gt","schwach ausgepr&auml;gt"],
+rightItems:["Nat&uuml;rliches Kindheits-Ich","Kritisches Eltern-Ich","St&uuml;tzendes Eltern-Ich","Erwachsenen-Ich","Angepasstes Kindheits-Ich"],
 correct:[0,1,2,3,4]},
 
 {id:24,title:"24. Verfahren zur Arbeitsbewertung [ID: 1640]",type:"single",
-text:"Ich vergebe für einzelne Anforderungskategorien (z.B. Geschwindigkeit) für alle Funktionen Punktwerte. Dies ist das",
+text:"Ich vergebe f&uuml;r einzelne Anforderungskategorien (z.B. Geschwindigkeit) f&uuml;r alle Funktionen Punktwerte. Dies ist das",
 options:["Lohngruppenverfahren","Rangfolgeverfahren","Rangreihenverfahren","Stufenwertzahlverfahren"],
 correct:3},
 
 {id:25,title:"25. Lohntransparenz [ID: 1604]",type:"multiple",
-text:"Kreuzen Sie die zutreffende Antwort/die zutreffenden Antworten an:",
-options:["Lohntransparenz ermöglicht eine spezielle Förderung besonderer Leistungsträger im Unternehmen.","Die Einführung von Lohntransparenz muss datenschutzrechtlich gut begleitet werden.","Lohntransparenz erhöht grundsätzlich den Druck für die Firma gerechte Löhne sicherzustellen.","Die Lohntransparenz ist für jedes Unternehmen sinnvoll, da so alle Mitarbeitenden gut nachvollziehen können, wie ihr Lohn zustande kommt."],
+text:"Kreuzen Sie die zutreffende/n Antwort/en an:",
+options:["Lohntransparenz erm&ouml;glicht eine spezielle F&ouml;rderung besonderer Leistungstr&auml;ger.","Die Einf&uuml;hrung von Lohntransparenz muss datenschutzrechtlich gut begleitet werden.","Lohntransparenz erh&ouml;ht grunds&auml;tzlich den Druck f&uuml;r die Firma, gerechte L&ouml;hne sicherzustellen.","Die Lohntransparenz ist f&uuml;r jedes Unternehmen sinnvoll."],
 correct:[1,2]},
 
-{id:26,title:"26. Selektion – Beurteilungsfehler [ID: 1624]",type:"matching",
+{id:26,title:"26. Beurteilungsfehler [ID: 1624]",type:"matching",
 text:"Ordnen Sie bitte zu:",
-leftItems:["\"Sie fanden Frau Brütsch ausnahmslos ausgezeichnet? Der CEO auch? Tja, da kann ich mich nur anschliessen.\"","\"Ordnung ist das halbe Leben, sage ich immer.\"","\"Wie ich die Bewerber fand? Ach, eigentlich alle ganz brauchbar, keiner herausragend, aber i.O.\"","\"Herr Pharao – schon ein spezieller Name – ist mir gut im Gedächtnis geblieben.\""],
-rightItems:["Konformitätsdruck","Aktivierte Schemata","Tendenz zur Mitte","Herausragender Stimulus"],
+leftItems:["\"Sie fanden Frau Br&uuml;tsch ausnahmslos ausgezeichnet? Der CEO auch? Da kann ich mich nur anschliessen.\"","\"Ordnung ist das halbe Leben, sage ich immer.\"","\"Wie ich die Bewerber fand? Ach, eigentlich alle ganz brauchbar, keiner herausragend.\"","\"Herr Pharao &ndash; schon ein spezieller Name &ndash; ist mir gut im Ged&auml;chtnis geblieben.\""],
+rightItems:["Konformit&auml;tsdruck","Aktivierte Schemata","Tendenz zur Mitte","Herausragender Stimulus"],
 correct:[0,1,2,3]},
 
 {id:27,title:"27. Arbeitsbewertungsverfahren [ID: 1569]",type:"fillin-select",
-text:"Anforderung; Reihung und Stufung – Ergänzen Sie die richtigen Begriffe:",
+text:"Erg&auml;nzen Sie die richtigen Begriffe:",
 options:["Reihung","Stufung"],
 sentences:[
-  {before:"Bei einer ",after:" werden alle Funktionen dem Schwierigkeitsgrad nach geordnet in eine Reihenfolge gebracht. Jede Funktion hat dabei einen anderen Rangplatz.",correct:"Reihung"},
+  {before:"Bei einer ",after:" werden alle Funktionen dem Schwierigkeitsgrad nach geordnet in eine Reihenfolge gebracht.",correct:"Reihung"},
   {before:"Bei einer ",after:" werden die Funktionen vom Schwierigkeitsgrad her in Gruppen geordnet.",correct:"Stufung"},
-  {before:"Die ",after:" liefert Infos über die Abstände zwischen den einzelnen Funktionen.",correct:"Stufung"},
+  {before:"Die ",after:" liefert Infos &uuml;ber die Abst&auml;nde zwischen den einzelnen Funktionen.",correct:"Stufung"},
   {before:"Die ",after:" sollte nur bei wenigen gleichzeitig zu bewertenden Funktionen eingesetzt werden.",correct:"Reihung"}
 ]},
 
-{id:28,title:"28. Verhaltensökonomische Aspekte der Führung [ID: 1650]",type:"single",
-context:"Sie präsentieren einer zufällig ausgewählten Gruppe von Personen zwei Szenarien, die beide rational betrachtet die gleiche Eintretenswahrscheinlichkeit haben, die die Teilnehmer aber nicht kennen. Szenario A stellen Sie kurz und trocken dar, Szenario B beschreiben Sie detailliert in Geschichtenform, die Sie bildhaft ausschmücken. Wenn Sie die Teilnehmer anschliessend fragen, welches Szenario die höhere Eintretenswahrscheinlichkeit hat,",
-text:"welches Szenario wird dann höchstwahrscheinlich genannt?",
+{id:28,title:"28. Verhaltens&ouml;konomie [ID: 1650]",type:"single",
+context:"Sie pr&auml;sentieren zwei Szenarien mit gleicher Eintretenswahrscheinlichkeit. Szenario A kurz und trocken, Szenario B detailliert und bildhaft ausgeschm&uuml;ckt.",
+text:"Welches Szenario wird h&ouml;chstwahrscheinlich als wahrscheinlicher eingesch&auml;tzt?",
 options:["Szenario A","Szenario B"],
 correct:1},
 
-{id:29,title:"29. Leistung; Wirkung Entlohnung [ID: 1602]",type:"fillin-select",
-text:"Vervollständigen Sie die Sätze so, dass die Aussagen richtig sind.",
-options:["jahreszielabhängiger Bonus","fixer, jährlich angepasster Leistungsanteil im Monatslohn"],
+{id:29,title:"29. Wirkung Entlohnung [ID: 1602]",type:"fillin-select",
+text:"Vervollst&auml;ndigen Sie die S&auml;tze:",
+options:["jahreszielabh&auml;ngiger Bonus","fixer, j&auml;hrlich angepasster Leistungsanteil im Monatslohn"],
 sentences:[
-  {before:"Ein ",after:" hilft bei der konsequenten Ausrichtung der Unternehmung auf die Unternehmensziele.",correct:"jahreszielabhängiger Bonus"},
-  {before:"Ein ",after:" fokussiert die Mitarbeitenden in ihrem Leistungsverhalten auf grundsätzliche Leistungsaspekte, wie Speditivität, Teamverhalten etc.",correct:"fixer, jährlich angepasster Leistungsanteil im Monatslohn"},
-  {before:"Ein ",after:" darf von der Motivationswirkung her nicht überschätzt werden. Es muss ferner berücksichtigt werden, dass die Erwartungen der Mitarbeitenden ständig steigen können.",correct:"jahreszielabhängiger Bonus"},
-  {before:"Ein ",after:" ist eher für repetitive, einfache Tätigkeiten geeignet und weniger für kreative und anspruchsvolle Tätigkeiten.",correct:"fixer, jährlich angepasster Leistungsanteil im Monatslohn"},
-  {before:"Ein ",after:" kann dazu führen, dass gut messbare, aber z.T. für Erreichung des Unternehmenserfolges unwesentliche Ziele vereinbart werden.",correct:"fixer, jährlich angepasster Leistungsanteil im Monatslohn"}
+  {before:"Ein ",after:" hilft bei der konsequenten Ausrichtung auf die Unternehmensziele.",correct:"jahreszielabhängiger Bonus"},
+  {before:"Ein ",after:" fokussiert auf grunds&auml;tzliche Leistungsaspekte wie Speditivit&auml;t, Teamverhalten etc.",correct:"fixer, jährlich angepasster Leistungsanteil im Monatslohn"},
+  {before:"Ein ",after:" darf von der Motivationswirkung her nicht &uuml;bersch&auml;tzt werden.",correct:"jahreszielabhängiger Bonus"},
+  {before:"Ein ",after:" ist eher f&uuml;r repetitive, einfache T&auml;tigkeiten geeignet.",correct:"fixer, jährlich angepasster Leistungsanteil im Monatslohn"},
+  {before:"Ein ",after:" kann dazu f&uuml;hren, dass gut messbare, aber unwesent. Ziele vereinbart werden.",correct:"fixer, jährlich angepasster Leistungsanteil im Monatslohn"}
 ]},
 
-{id:30,title:"30. Verhaltensökonomische Aspekte der Führung [ID: 1644]",type:"single",
-context:"Sie fragen eine grössere Gruppe von Informatikern nach ihren Programmierkenntnissen.",
-text:"Wie viele werden im Normalfall angeben, dass ihre Programmierkenntnisse überdurchschnittlich gut sind?",
-options:["weniger als die Hälfte","mehr als die Hälfte"],
+{id:30,title:"30. Verhaltens&ouml;konomie [ID: 1644]",type:"single",
+context:"Sie fragen eine gr&ouml;ssere Gruppe von Informatikern nach ihren Programmierkenntnissen.",
+text:"Wie viele werden angeben, dass ihre Kenntnisse &uuml;berdurchschnittlich gut sind?",
+options:["weniger als die H&auml;lfte","mehr als die H&auml;lfte"],
 correct:1},
 
 {id:31,title:"31. Antreiber [ID: 1567]",type:"multiple",
 text:"Welche Aussage/n zu Antreibern ist/sind korrekt?",
-options:["Teammitglieder mit einem hohen \"sei stark\" sollte man öfter fragen, ob sie Hilfe benötigen, damit sie diese bei Gruppenarbeiten nicht zu spät anfordern.","\"sei perfekt\" und \"mach schnell\" ist eine Kombination, die zum Burnout einer Person führen kann.","Einen Antreiber mit einem Wert über 10 erkennt man oft in den ersten Minuten bei seinem Gesprächspartner.","\"Tue es gelassener\" ersetzt den Antreiber \"sei stark\"."],
+options:["Teammitglieder mit einem hohen \"sei stark\" sollte man &ouml;fter fragen, ob sie Hilfe ben&ouml;tigen.","\"sei perfekt\" und \"mach schnell\" ist eine Kombination, die zum Burnout f&uuml;hren kann.","Einen Antreiber mit einem Wert &uuml;ber 10 erkennt man oft in den ersten Minuten.","\"Tue es gelassener\" ersetzt den Antreiber \"sei stark\"."],
 correct:[0,1]},
 
-{id:32,title:"32. Situationsbezogener Führungsstil [ID: 1630]",type:"single",
-context:"Peter Müller übernimmt die Leitung eines Teams in der Informatik der Horwer Elektrogeräte AG. Die Mitarbeiter sind grösstenteils sehr motiviert, aber leider nicht sehr kompetent.",
-text:"Welcher Führungsstil ist nach Kälin / Müri dieser Situation angemessen?",
-options:["Laissez-faire Führungsstil","Autoritärer Führungsstil","Karitativer Führungsstil","Kooperativer Führungsstil"],
+{id:32,title:"32. Situationsbezogener F&uuml;hrungsstil [ID: 1630]",type:"single",
+context:"Peter M&uuml;ller &uuml;bernimmt die Leitung eines Teams. Die Mitarbeiter sind gr&ouml;sstenteils sehr motiviert, aber leider nicht sehr kompetent.",
+text:"Welcher F&uuml;hrungsstil ist nach K&auml;lin / M&uuml;ri dieser Situation angemessen?",
+options:["Laissez-faire F&uuml;hrungsstil","Autorit&auml;rer F&uuml;hrungsstil","Karitativer F&uuml;hrungsstil","Kooperativer F&uuml;hrungsstil"],
 correct:1},
 
-{id:33,title:"33. Verhandlungsführung [ID: 1652]",type:"tf-matrix",
-context:`Walter Schmidlin, der neue Verkaufsleiter, verhandelt mit einem langjährigen Kunden über eine Preiserhöhung. Zu seinen Jahreszielen gehört es, den Umsatz um 20% zu steigern. Er beginnt die Verhandlung mit den Worten: \u201EUnsere Preise waren bis jetzt viel zu tief. Die neue Preisliste ist 20% höher, ist aber für die gelieferte Qualität immer noch billiger als die Konkurrenzprodukte. Wenn Sie den Markt kennen, wissen Sie, dass Sie sich bis jetzt durch unsere preisgünstigen Produkte auf Kosten der Horwer Elektrogeräte AG eine goldene Nase verdient haben. Jetzt wird es Zeit, dass wieder in vernünftige Relationen zu bringen."`,
-text:"Beurteilen Sie Schmidlins Vorgehen: Hat er die 4 Grundaspekte des sachbezogenen Verhandelns berücksichtigt oder nicht?",
-instruction:"Für jede Aussage muss entschieden werden: [berücksichtigt] oder [nicht berücksichtigt]",
-header:["berücksichtigt","nicht berücksichtigt"],
+{id:33,title:"33. Verhandlungsf&uuml;hrung [ID: 1652]",type:"tf-matrix",
+context:"Walter Schmidlin beginnt die Verhandlung mit den Worten: &laquo;Unsere Preise waren bis jetzt viel zu tief. Die neue Preisliste ist 20% h&ouml;her. Wenn Sie den Markt kennen, wissen Sie, dass Sie sich durch unsere preisg&uuml;nstigen Produkte auf Kosten der Horwer AG eine goldene Nase verdient haben.&raquo;",
+text:"Hat Schmidlin die 4 Grundaspekte des sachbezogenen Verhandelns ber&uuml;cksichtigt?",
+instruction:"F&uuml;r jede Aussage: [ber&uuml;cksichtigt] oder [nicht ber&uuml;cksichtigt]",
+header:["ber&uuml;cksichtigt","nicht ber&uuml;cksichtigt"],
 statements:[
   {text:"Menschen und Probleme trennen.",correct:1},
   {text:"Interessen, nicht Positionen in den Mittelpunkt stellen",correct:1},
-  {text:"Wahlmöglichkeiten entwickeln",correct:1},
-  {text:"Kriterien für Entscheide entwickeln (Wann ist eine Option akzeptabel?)",correct:1}
+  {text:"Wahlm&ouml;glichkeiten entwickeln",correct:1},
+  {text:"Kriterien f&uuml;r Entscheide entwickeln",correct:1}
 ]},
 
-{id:34,title:"34. Referenzen und Tests; Assessment Center [ID: 1622]",type:"multiple",
+{id:34,title:"34. Assessment Center [ID: 1622]",type:"multiple",
 text:"Ein Assessment Center",
-options:["beinhaltet verschiedene Beurteiler und unterschiedliche Verfahren","ist recht aufwändig","wird nur bei der Bewerberauswahl eingesetzt.","wird in der Mehrzahl der Unternehmen eingesetzt","kann Rollenspiele, Unternehmensplanspiele und Gespräche enthalten."],
+options:["beinhaltet verschiedene Beurteiler und unterschiedliche Verfahren","ist recht aufw&auml;ndig","wird nur bei der Bewerberauswahl eingesetzt","wird in der Mehrzahl der Unternehmen eingesetzt","kann Rollenspiele, Unternehmensplanspiele und Gespr&auml;che enthalten"],
 correct:[0,1,4]},
 
 {id:35,title:"35. Stressmanagement [ID: 1634]",type:"matching",
-context:"Der Stresslevel in Konrad Hubers Abteilung ist hoch. Er muss 3 neue Aufgabenpakete verteilen – alle Mitarbeitenden könnten jedes Paket übernehmen. Er verteilt so, dass möglichst wenig zusätzlicher Stress entsteht.",
+context:"Der Stresslevel in Konrad Hubers Abteilung ist hoch. Er muss 3 Aufgabenpakete verteilen &ndash; alle Mitarbeitenden k&ouml;nnten jedes Paket &uuml;bernehmen. Er verteilt so, dass m&ouml;glichst wenig zus&auml;tzlicher Stress entsteht.",
 text:"Ordnen Sie die Aufgaben den Mitarbeitern zu:",
-leftItems:["Aufgabe 1: Hat eine Deadline, die unbedingt eingehalten werden muss. Der Auftraggeber würde wahrscheinlich auch eine 80%-Lösung akzeptieren","Aufgabe 2: Das Ergebnis muss stimmen. Die Fehlertoleranz ist klein. Die Einhaltung des Wunsch-Endtermins ist eher sekundär.","Aufgabe 3: Es muss eine Lösung gefunden werden. Dabei wird es Gewinner und Verlierer geben. Das Thema ist sehr emotionsbeladen. Die Arbeitszeit ist begrenzt.","keine der drei Aufgaben"],
-rightItems:["Mitarbeiter A: Sei stark & Streng Dich an","Mitarbeiter B: Sei schnell","Mitarbeiter C: Streng Dich an & Mach es allen recht","Mitarbeiter D: Mach es allen recht & Sei perfekt"],
+leftItems:["Aufgabe 1: Hat eine Deadline, die unbedingt eingehalten werden muss. Der Auftraggeber w&uuml;rde auch eine 80%-L&ouml;sung akzeptieren.","Aufgabe 2: Das Ergebnis muss stimmen. Fehlertoleranz ist klein. Wunsch-Endtermin eher sekund&auml;r.","Aufgabe 3: Es muss eine L&ouml;sung gefunden werden. Es wird Gewinner und Verlierer geben. Sehr emotionsbeladen.","keine der drei Aufgaben"],
+rightItems:["Mitarbeiter A: Sei stark &amp; Streng Dich an","Mitarbeiter B: Sei schnell","Mitarbeiter C: Streng Dich an &amp; Mach es allen recht","Mitarbeiter D: Mach es allen recht &amp; Sei perfekt"],
 correct:[1,3,0,2]},
 
-{id:36,title:"36. Führungsstile nach Kälin / Müri [ID: 1591]",type:"matching",
-text:"Ordnen Sie die Beschreibungen dem passenden Führungsstil zu. Ordnen Sie jede Beschreibung genau einem Führungsstil zu.",
-leftItems:["Personen mit einem solchen Führungsstil bevorzugen genaue Richtlinien.","Personen mit einem solchen Führungsstil lassen den Mitarbeitern grosse Freiräume.","Personen mit einem solchen Führungsstil ermutigen und unterstützen die Mitarbeiter.","Personen mit einem solchen Führungsstil suchen nach den Ursachen von Problemen.","Personen mit einem solchen Führungsstil sind \u201Ehart&quot; mit sich selber.","Personen mit einem solchen Führungsstil vertrauen den eigenen Fähigkeiten mehr als denjenigen der Mitarbeiter."],
-rightItems:["Autoritärer Führungsstil","Laissez-faire Führungsstil","Karitativer Führungsstil","Kooperativer Führungsstil"],
-correct:[0,1,2,2,0,3]},
+{id:36,title:"36. F&uuml;hrungsstile nach K&auml;lin / M&uuml;ri [ID: 1591]",type:"matching",
+text:"Ordnen Sie die Beschreibungen dem passenden F&uuml;hrungsstil zu:",
+leftItems:["Personen mit einem solchen F&uuml;hrungsstil bevorzugen genaue Richtlinien.","Personen mit einem solchen F&uuml;hrungsstil lassen den Mitarbeitern grosse Freir&auml;ume.","Personen mit einem solchen F&uuml;hrungsstil ermutigen und unterst&uuml;tzen die Mitarbeiter.","Personen mit einem solchen F&uuml;hrungsstil suchen nach den Ursachen von Problemen.","Personen mit einem solchen F&uuml;hrungsstil sind &laquo;hart&raquo; mit sich selber.","Personen mit einem solchen F&uuml;hrungsstil vertrauen den eigenen F&auml;higkeiten mehr als denjenigen der Mitarbeiter."],
+rightItems:["Autorit&auml;rer F&uuml;hrungsstil","Laissez-faire F&uuml;hrungsstil","Karitativer F&uuml;hrungsstil","Kooperativer F&uuml;hrungsstil"],
+correct:[0,1,2,3,0,0]},
 
-{id:37,title:"37. Einführung; Probezeit [ID: 1589]",type:"single",
+{id:37,title:"37. Einf&uuml;hrung; Probezeit [ID: 1589]",type:"single",
 text:"Die Probezeit eines Mitarbeitenden darf maximal 3 Monate betragen.",
 options:["falsch","richtig"],
 correct:1},
 
-{id:38,title:"38. Verhaltensökonomische Aspekte der Führung [ID: 1648]",type:"single",
-context:"Die Kunden einer Wochenzeitung können wählen zwischen einem online Abonnement für CHF 59.00 und einem Abonnement für gedruckte Exemplare für CHF 125.00. Neu wird jetzt zusätzlich die Möglichkeit angeboten, die gedruckten Exemplare plus das online Abonnement für CHF 125.00 zu erwerben. Bei total gleicher Anzahl Zeitungs-Kunden wird jetzt im Normalfall der Anteil Kunden, die nur das online Abonnement wünschen",
-text:"...",
-options:["grösser werden","gleich bleiben","kleiner werden."],
+{id:38,title:"38. Verhaltens&ouml;konomie [ID: 1648]",type:"single",
+context:"Kunden einer Wochenzeitung k&ouml;nnen w&auml;hlen zwischen online-Abo CHF 59 und Print-Abo CHF 125. Neu wird zus&auml;tzlich Print+Online f&uuml;r CHF 125 angeboten.",
+text:"Wird der Anteil Kunden, die nur das Online-Abo w&uuml;nschen, gr&ouml;sser, gleich oder kleiner?",
+options:["gr&ouml;sser werden","gleich bleiben","kleiner werden"],
 correct:2},
 
-{id:39,title:"39. Mitarbeiterbeurteilung – Beurteilungsfehler [ID: 1608]",type:"matching",
+{id:39,title:"39. Beurteilungsfehler [ID: 1608]",type:"matching",
 text:"Bestimmen Sie den Beurteilungsfehler / die Beurteilungstendenz:",
-leftItems:["«Meine Mitarbeitenden machen es alle ganz ordentlich. Keiner ist besonders gut, dafür ist auch keiner besonders schlecht.»","«Bei Personen, die mir sympathisch sind, gehe ich automatisch davon aus, dass sie mir auch ähnlich sind. Mir ähnliche Personen stufe ich als Vorgesetzter i.d.R. besser ein»","«Die Beurteilung von bekannten Arbeitssituationen kann ich differenzierter vornehmen als die Beurteilung von mir fremden Situationen.»","«Wenn für mich das Bild eines Mitarbeitenden zwiespältig ist, bemühe ich mich, meine Wahrnehmung so zu ändern, dass die Ungereimtheit verschwindet.»","«Das was ich selber an mir nicht mag, stelle ich zuverlässig an anderen fest.»"],
-rightItems:["Tendenz zur Mitte","Besonderheiten von Signalen","Ähnlichkeitsfehler","kognitive Dissonanz","Projektion"],
+leftItems:["&laquo;Meine Mitarbeitenden machen es alle ganz ordentlich. Keiner ist besonders gut, daf&uuml;r ist auch keiner besonders schlecht.&raquo;","&laquo;Bei Personen, die mir sympathisch sind, gehe ich automatisch davon aus, dass sie mir auch &auml;hnlich sind.&raquo;","&laquo;Die Beurteilung von bekannten Arbeitssituationen kann ich differenzierter vornehmen als die Beurteilung von mir fremden Situationen.&raquo;","&laquo;Wenn das Bild eines Mitarbeitenden zwiespältig ist, bem&uuml;he ich mich, meine Wahrnehmung so zu &auml;ndern, dass die Ungereimtheit verschwindet.&raquo;","&laquo;Das was ich selber an mir nicht mag, stelle ich zuverl&auml;ssig an anderen fest.&raquo;"],
+rightItems:["Tendenz zur Mitte","Besonderheiten von Signalen","&Auml;hnlichkeitsfehler","kognitive Dissonanz","Projektion"],
 correct:[0,2,1,3,4]},
 
 {id:40,title:"40. Konflikteskalation [ID: 1600]",type:"single",
-context:`Der Informatik-Leiter Eugen Meier erzählt seinem Kollegen, dem Abteilungsleiter der Logistik, abends beim Bier: \u201EDieser Lukas Pfyffer, unser Finanzchef; der nörgelt ständig rum, die Informatik wäre zu teuer, die Projekte würden sich verzögern und würden nichts bringen. Bestimmt fängt er bald bei Dir auch an, irgendwelche schwachsinnigen Vorschläge zur Kostensenkung zu machen: Versand per Luftballon oder so. Das ist so ein typischer Uni-Eierkopf. Der hat er überhaupt keine Ahnung von gar nichts. Wie der mit seinem Aktenköfferchen schon immer daherkommt. Dem hätte eine richtige Berufslehre wie wir sie gemacht haben auch gut getan. Aber wahrscheinlich hätte das bei dem auch nichts mehr genutzt. Gegen den müssen wir Praktiker zusammenhalten, sonst treibt der noch die ganze Firma in den Abgrund."`,
+context:"Eugen Meier sagt zu seinem Kollegen beim Bier: &laquo;Dieser Lukas Pfyffer, unser Finanzchef, n&ouml;rgelt st&auml;ndig rum. Das ist so ein typischer Uni-Eierkopf. Gegen den m&uuml;ssen wir Praktiker zusammenhalten, sonst treibt der noch die ganze Firma in den Abgrund.&raquo;",
 text:"Auf welcher Eskalationsstufe befindet sich Meier?",
-options:["1 – Verhärtung","2 – Debatte","3 – Aktionen","4 – Images / Koalitionen","5 – Gesichtsverlust","6 – Drohstrategien","7 – begrenzte Vernichtungsschläge","8 – Zersplitterung","9 – Gemeinsam in den Abgrund"],
+options:["1 &ndash; Verh&auml;rtung","2 &ndash; Debatte","3 &ndash; Aktionen","4 &ndash; Images / Koalitionen","5 &ndash; Gesichtsverlust","6 &ndash; Drohstrategien","7 &ndash; begrenzte Vernichtungsschl&auml;ge","8 &ndash; Zersplitterung","9 &ndash; Gemeinsam in den Abgrund"],
 correct:3},
 
-{id:41,title:"41. Arbeitszeit – Überstunden [ID: 1571]",type:"single",
-text:"Überstunden sind ...",
-options:["nur die Stunden, die über die gesetzliche wöchentliche Höchstarbeitszeit hinausgehen","alle Stunden, die über die vertraglich vereinbarte Zahl an Stunden hinausgehen"],
+{id:41,title:"41. Arbeitszeit &ndash; &Uuml;berstunden [ID: 1571]",type:"single",
+text:"&Uuml;berstunden sind ...",
+options:["nur die Stunden, die &uuml;ber die gesetzliche w&ouml;chentliche H&ouml;chstarbeitszeit hinausgehen","alle Stunden, die &uuml;ber die vertraglich vereinbarte Zahl an Stunden hinausgehen"],
 correct:1},
 
-{id:42,title:"42. Vermischte Aussagen zu Honorierung [ID: 1654]",type:"multiple",
-text:"Kreuzen Sie die korrekten Aussagen im Zusammenhang mit Honorierung an",
-options:["Lohnerhöhungen machen kurzfristig glücklich, Lohnkürzungen ärgern langfristig.","Der Verdrängungseffekt heisst auch \"crowding out\"-Effekt.","Im Umgang mit Geld sind wir rational."],
+{id:42,title:"42. Honorierung [ID: 1654]",type:"multiple",
+text:"Kreuzen Sie die korrekten Aussagen zur Honorierung an:",
+options:["Lohnerh&ouml;hungen machen kurzfristig gl&uuml;cklich, Lohnk&uuml;rzungen &auml;rgern langfristig.","Der Verdr&auml;ngungseffekt heisst auch \"crowding out\"-Effekt.","Im Umgang mit Geld sind wir rational."],
 correct:[0,1]},
 
-{id:43,title:"43. Arbeitszeit; Mehrarbeit – Anwendungsbeispiel (c) [ID: 1573]",type:"single",
-context:"Frau Müller arbeitet in der Produktion bei einer Papierfabrik. Sie hat einen Arbeitsvertrag mit 40 h pro Woche. Sie hat letzte Woche 49 h gearbeitet und damit drei Überzeitstunden.",
-text:"Sind letztere gleichzeitig auch Überstunden?",
+{id:43,title:"43. Mehrarbeit Anwendungsbeispiel (c) [ID: 1573]",type:"single",
+context:"Frau M&uuml;ller hat letzte Woche 49 h gearbeitet und damit drei &Uuml;berzeitstunden.",
+text:"Sind letztere gleichzeitig auch &Uuml;berstunden?",
 options:["Nein","Ja"],
 correct:1},
 
-{id:44,title:"44. Grundfragen; Gerechter Lohn [ID: 1593]",type:"single",
+{id:44,title:"44. Gerechter Lohn [ID: 1593]",type:"single",
 text:"Es gibt den absolut gerechten Lohn",
 options:["Ja","Nein"],
 correct:1},
 
 {id:45,title:"45. Interviewformen [ID: 1598]",type:"freetext",
-text:"In welchen Situationen/für welche Funktionen setzt man ein Gruppeninterview ein? Nennen Sie mindestens zwei Funktionen. Begründen Sie!",
-modelAnswer:`<strong>1. Teamstellen / Teamintegration:</strong> Wenn die Person eng mit einem Team zusammenarbeiten soll, kann das Team gemeinsam interviewen. Das gibt Aufschluss über die potenzielle Teamdynamik und zeigt dem Kandidaten, wie das zukünftige Umfeld aussieht.<br><br>
-<strong>2. Führungsfunktionen:</strong> Zwei oder mehr Interviewer (z.B. HR + Linienvorgesetzter) geben zusammen eine fundiertere Einschätzung ab. Besonders bei Führungskräften ist eine Mehrperspektiven-Beurteilung wichtig, da diese langfristig zur Unternehmenskultur passen müssen.`}
+text:"In welchen Situationen/f&uuml;r welche Funktionen setzt man ein Gruppeninterview ein? Nennen Sie mindestens zwei Funktionen. Begr&uuml;nden Sie!",
+modelAnswer:"<strong>1. Teamstellen:</strong> Wenn die Person eng mit einem Team zusammenarbeiten soll, kann das Team gemeinsam interviewen. Zeigt potenzielle Teamdynamik.<br><br><strong>2. F&uuml;hrungsfunktionen:</strong> HR + Linienvorgesetzter geben zusammen eine fundiertere Einsch&auml;tzung ab. Bei F&uuml;hrungskr&auml;ften ist Mehrperspektiven-Beurteilung wichtig."}
 ];
 
-// ==========================================================
-// QUIZ STATE
-// ==========================================================
-let currentQ = 0;
-let userAnswers = new Array(questions.length).fill(null);
-let checked = new Array(questions.length).fill(false);
-
+// ── QUIZ STATE ─────────────────────────────────────────
 function startQuiz(){
+  currentQ=0;
+  questionOrder=shuffle(questions.map(function(_,i){return i;}));
+  optionMaps={};
+  questionOrder.forEach(function(origIdx,pos){
+    var q=questions[origIdx];
+    if(q.type==='multiple'||q.type==='single'){
+      optionMaps[pos]=shuffle(q.options.map(function(_,i){return i;}));
+    }
+  });
+  userAnswers=new Array(questions.length).fill(null);
+  checked=new Array(questions.length).fill(false);
+  wrongQs=[];
   document.getElementById('startScreen').classList.remove('active');
   document.getElementById('quizScreen').classList.add('active');
   document.getElementById('progressWrap').style.display='block';
@@ -670,311 +660,208 @@ function startQuiz(){
 }
 
 function updateProgress(){
-  const pct = ((currentQ+1)/questions.length*100).toFixed(0);
+  var pct=((currentQ+1)/questions.length*100).toFixed(0);
   document.getElementById('progressFill').style.width=pct+'%';
-  document.getElementById('progressText').textContent=`Frage ${currentQ+1} von ${questions.length}`;
+  document.getElementById('progressText').textContent='Frage '+(currentQ+1)+' von '+questions.length;
 }
 
 function navigate(dir){
   saveCurrentAnswer();
-  currentQ = Math.max(0, Math.min(questions.length-1, currentQ+dir));
+  currentQ=Math.max(0,Math.min(questions.length-1,currentQ+dir));
   renderQuestion();
 }
 
-// ==========================================================
-// RENDER QUESTION
-// ==========================================================
 function renderQuestion(){
   updateProgress();
-  const q = questions[currentQ];
-  const isChecked = checked[currentQ];
-  let html = `<div class="q-card">`;
-  html += `<div class="q-title">${q.title}</div>`;
-
-  // Context
-  if(q.context) html += `<div class="q-context">${q.context}</div>`;
-
-  // Image before question text
-  if(q.image === 'nwa') html += renderNWA();
-  if(q.image === 'process') html += renderProcessDiagram();
-  if(q.image === 'orgchart') html += renderOrgChart();
-
-  if(q.imageAfter) html += `<div class="q-context" style="margin-top:8px">${q.imageAfter}</div>`;
-
-  // Question text
-  if(q.text && q.text !== '...') html += `<div class="q-text">${q.text}</div>`;
-  if(q.instruction) html += `<div class="q-instruction">${q.instruction}</div>`;
-
-  // Render by type
-  if(q.type==='multiple') html += renderMultiple(q, isChecked);
-  else if(q.type==='single') html += renderSingle(q, isChecked);
-  else if(q.type==='matching') html += renderMatching(q, isChecked);
-  else if(q.type==='fillin-number') html += renderFillinNumber(q, isChecked);
-  else if(q.type==='fillin-select') html += renderFillinSelect(q, isChecked);
-  else if(q.type==='tf-matrix') html += renderTFMatrix(q, isChecked);
-  else if(q.type==='ordering') html += renderOrdering(q, isChecked);
-  else if(q.type==='freetext') html += renderFreetext(q);
-
-  // Result box
-  if(isChecked && q.type !== 'freetext'){
-    const ok = isAnswerCorrect(q, userAnswers[currentQ]);
-    html += `<div class="result-box ${ok?'ok':'fail'}" style="display:block">${ok?'✅ Korrekt!':'❌ Nicht vollständig korrekt – korrekte Antworten sind oben markiert.'}</div>`;
+  var q=questions[questionOrder[currentQ]];
+  var isChk=checked[currentQ];
+  var typeLabels={multiple:'&#9745; Mehrfachauswahl',single:'&#9711; Einzelauswahl',matching:'&#8646; Zuordnung','fillin-number':'&#9998; Einsetzen','fillin-select':'&#9660; Ausw&#228;hlen','tf-matrix':'&#10003;/&#10007; Wahr/Falsch',ordering:'&#8645; Reihenfolge',freetext:'&#9998; Freitext'};
+  var badge=typeLabels[q.type]||q.type;
+  var html='<div class="q-card">';
+  html+='<div class="q-card-header"><div class="q-type-badge">'+badge+'</div><div class="q-title">'+q.title+'</div></div>';
+  html+='<div class="q-card-body">';
+  if(q.context) html+='<div class="q-context">'+q.context+'</div>';
+  if(q.image==='nwa') html+=renderNWA();
+  if(q.image==='process') html+=renderProcessDiagram();
+  if(q.image==='orgchart') html+=renderOrgChart();
+  if(q.imageAfter) html+='<div class="q-context" style="margin-top:8px">'+q.imageAfter+'</div>';
+  if(q.text&&q.text!=='...') html+='<div class="q-text">'+q.text+'</div>';
+  if(q.instruction) html+='<div class="q-instruction">'+q.instruction+'</div>';
+  if(q.type==='multiple') html+=rMultiple(q,isChk);
+  else if(q.type==='single') html+=rSingle(q,isChk);
+  else if(q.type==='matching') html+=rMatching(q,isChk);
+  else if(q.type==='fillin-number') html+=rFillinNum(q,isChk);
+  else if(q.type==='fillin-select') html+=rFillinSel(q,isChk);
+  else if(q.type==='tf-matrix') html+=rTF(q,isChk);
+  else if(q.type==='ordering') html+=rOrder(q,isChk);
+  else if(q.type==='freetext') html+=rFreetext(q);
+  if(isChk&&q.type!=='freetext'){
+    var ok=isCorrect(q,userAnswers[currentQ]);
+    html+='<div class="result-box '+(ok?'ok':'fail')+'" style="display:block">'+(ok?'&#10003; Korrekt!':'&#10007; Nicht vollst&#228;ndig korrekt.')+'</div>';
   }
-
-  html += `</div>`;
-  document.getElementById('questionArea').innerHTML = html;
-
-  // Navigation buttons
-  const btnPrev = document.getElementById('btnPrev');
-  const btnNext = document.getElementById('btnNext');
-  const btnCheck = document.getElementById('btnCheck');
-  btnPrev.style.display = currentQ===0?'none':'';
+  html+='</div></div>';
+  document.getElementById('questionArea').innerHTML=html;
+  var btnP=document.getElementById('btnPrev');
+  var btnN=document.getElementById('btnNext');
+  var btnC=document.getElementById('btnCheck');
+  btnP.style.display=currentQ===0?'none':'';
   if(currentQ===questions.length-1){
-    btnNext.textContent='Ergebnis →';
-    btnNext.onclick=()=>{saveCurrentAnswer();showResults();};
-    btnNext.className='btn-nav btn-submit';
+    btnN.textContent='Ergebnis →';
+    btnN.onclick=function(){saveCurrentAnswer();doShowResults();};
+    btnN.className='btn-nav btn-submit';
   } else {
-    btnNext.textContent='Weiter →';
-    btnNext.onclick=()=>navigate(1);
-    btnNext.className='btn-nav btn-next';
+    btnN.textContent='Weiter →';
+    btnN.onclick=function(){navigate(1);};
+    btnN.className='btn-nav btn-next';
   }
-  btnCheck.style.display = (q.type==='freetext')?'none':'';
-  if(isChecked) btnCheck.style.opacity='0.5';
-  else btnCheck.style.opacity='1';
-
-  // Restore saved answer
-  restoreAnswer(q, userAnswers[currentQ], isChecked);
+  btnC.style.display=(q.type==='freetext')?'none':'';
+  btnC.style.opacity=isChk?'0.5':'1';
+  restoreAnswer(q,userAnswers[currentQ]);
   window.scrollTo(0,0);
 }
 
-// ==========================================================
-// RENDER TYPES
-// ==========================================================
-function renderMultiple(q, checked){
-  let html='';
-  q.options.forEach((opt,i)=>{
-    let cls='';
-    if(checked){
-      const isCorrect=q.correct.includes(i);
-      const ua=userAnswers[currentQ]||[];
-      const selected=ua.includes(i);
-      if(selected&&isCorrect) cls='correct-sel';
-      else if(selected&&!isCorrect) cls='wrong-sel';
-      else if(!selected&&isCorrect) cls='missed';
-    }
-    html+=`<label class="opt-label ${cls}" onclick="">
-      <input type="checkbox" name="q${currentQ}" value="${i}" ${checked?'disabled':''}>
-      <span class="opt-text">${opt}`;
-    if(checked){
-      const isCorrect=q.correct.includes(i);
-      const ua=userAnswers[currentQ]||[];
-      const selected=ua.includes(i);
-      if(selected&&isCorrect) html+=`<span class="opt-tag tag-ok">✓ Richtig</span>`;
-      else if(selected&&!isCorrect) html+=`<span class="opt-tag tag-wrong">✗ Falsch</span>`;
-      else if(!selected&&isCorrect) html+=`<span class="opt-tag tag-missed">→ Wäre korrekt</span>`;
-    }
-    html+=`</span></label>`;
+function rMultiple(q,chk){
+  var omap=optionMaps[currentQ]||q.options.map(function(_,i){return i;});
+  var h='';
+  omap.forEach(function(origIdx){
+    var opt=q.options[origIdx];
+    var cls='';
+    if(chk){var ua=userAnswers[currentQ]||[];var sel=ua.includes(origIdx);var cor=q.correct.includes(origIdx);if(sel&&cor)cls='correct-sel';else if(sel&&!cor)cls='wrong-sel';else if(!sel&&cor)cls='missed';}
+    h+='<label class="opt-label '+cls+'"><input type="checkbox" name="q'+currentQ+'" value="'+origIdx+'"'+(chk?' disabled':'')+'><span class="opt-text">'+opt;
+    if(chk){var ua=userAnswers[currentQ]||[];var sel=ua.includes(origIdx);var cor=q.correct.includes(origIdx);if(sel&&cor)h+='<span class="opt-tag tag-ok">&#10003; Richtig</span>';else if(sel&&!cor)h+='<span class="opt-tag tag-wrong">&#10007; Falsch</span>';else if(!sel&&cor)h+='<span class="opt-tag tag-missed">→ Käme korrekt</span>';}
+    h+='</span></label>';
   });
-  return html;
+  return h;
 }
-
-function renderSingle(q, checked){
-  let html='';
-  q.options.forEach((opt,i)=>{
-    let cls='';
-    if(checked){
-      const ua=userAnswers[currentQ];
-      if(i===q.correct) cls='correct-sel';
-      else if(i===ua&&i!==q.correct) cls='wrong-sel';
-    }
-    html+=`<label class="opt-label ${cls}">
-      <input type="radio" name="q${currentQ}" value="${i}" ${checked?'disabled':''}>
-      <span class="opt-text">${opt}`;
-    if(checked&&i===q.correct) html+=`<span class="opt-tag tag-ok">✓ Richtig</span>`;
-    else if(checked&&i===userAnswers[currentQ]&&i!==q.correct) html+=`<span class="opt-tag tag-wrong">✗ Falsch</span>`;
-    html+=`</span></label>`;
+function rSingle(q,chk){
+  var omap=optionMaps[currentQ]||q.options.map(function(_,i){return i;});
+  var h='';
+  omap.forEach(function(origIdx){
+    var opt=q.options[origIdx];
+    var cls='';
+    if(chk){if(origIdx===q.correct)cls='correct-sel';else if(origIdx===userAnswers[currentQ])cls='wrong-sel';}
+    h+='<label class="opt-label '+cls+'"><input type="radio" name="q'+currentQ+'" value="'+origIdx+'"'+(chk?' disabled':'')+'><span class="opt-text">'+opt;
+    if(chk&&origIdx===q.correct)h+='<span class="opt-tag tag-ok">&#10003; Richtig</span>';
+    else if(chk&&origIdx===userAnswers[currentQ]&&origIdx!==q.correct)h+='<span class="opt-tag tag-wrong">&#10007; Falsch</span>';
+    h+='</span></label>';
   });
-  return html;
+  return h;
 }
-
-function renderMatching(q, isChecked){
-  let html='';
-  q.leftItems.forEach((left,i)=>{
-    let selCls='';
-    if(isChecked){
-      const ua=userAnswers[currentQ]||{};
-      if(ua[i]!==undefined&&parseInt(ua[i])===q.correct[i]) selCls='correct-sel';
-      else selCls='wrong-sel';
-    }
-    html+=`<div class="match-row">
-      <div class="match-left">${left}</div>
-      <div class="match-right-wrap">
-        <span class="match-arrow">→</span>
-        <select class="match-select ${selCls}" data-idx="${i}" ${isChecked?'disabled':''}>
-          <option value="">– bitte wählen –</option>`;
-    q.rightItems.forEach((right,j)=>{
-      html+=`<option value="${j}">${right}</option>`;
+function rMatching(q,chk){
+  var h='';
+  q.leftItems.forEach(function(left,i){
+    var ua=userAnswers[currentQ]||{};
+    var selCls=chk?(parseInt(ua[i])===q.correct[i]?'correct-sel':'wrong-sel'):'';
+    h+='<div class="match-row"><div class="match-left">'+left+'</div><div class="match-right-wrap"><span class="match-arrow">→</span><select class="match-select '+selCls+'" data-idx="'+i+'"'+(chk?' disabled':'')+'><option value="">&#8211; bitte w&auml;hlen &#8211;</option>';
+    q.rightItems.forEach(function(r,j){h+='<option value="'+j+'">'+r+'</option>';});
+    h+='</select>';
+    if(chk&&parseInt(ua[i])!==q.correct[i])h+='<span style="font-size:0.75em;color:#276749;margin-left:4px">&#10003; '+q.rightItems[q.correct[i]]+'</span>';
+    h+='</div></div>';
+  });
+  return h;
+}
+function rFillinNum(q,chk){
+  var h='';
+  q.sentences.forEach(function(s,i){
+    var ua=userAnswers[currentQ]||{};
+    var cls=chk?(ua[i]===s.correct?'correct-sel':'wrong-sel'):'';
+    h+='<div class="fillin-sentence">'+s.before+'<input type="number" class="fillin-input '+cls+'" data-idx="'+i+'" placeholder="?"'+(chk?' disabled':'')+'>'+s.after;
+    if(chk&&ua[i]!==s.correct)h+=' <em style="color:#c53030;font-size:0.8em">(korrekt: '+s.correct+')</em>';
+    h+='</div>';
+  });
+  return h;
+}
+function rFillinSel(q,chk){
+  var h='';
+  q.sentences.forEach(function(s,i){
+    var ua=userAnswers[currentQ]||{};
+    var cls=chk?(ua[i]===s.correct?'correct-sel':'wrong-sel'):'';
+    h+='<div class="fillin-sentence">'+s.before+'<span class="fillin-sel"><select class="match-select '+cls+'" style="display:inline-block;width:auto" data-idx="'+i+'"'+(chk?' disabled':'')+'><option value="">?</option>';
+    q.options.forEach(function(opt){h+='<option value="'+opt+'">'+opt+'</option>';});
+    h+='</select></span>'+s.after;
+    if(chk&&ua[i]!==s.correct)h+=' <em style="color:#c53030;font-size:0.8em">(korrekt: '+s.correct+')</em>';
+    h+='</div>';
+  });
+  return h;
+}
+function rTF(q,chk){
+  var h='<table class="tf-table"><tr><th style="width:55%;text-align:left">Aussage</th><th>'+q.header[0]+'</th><th>'+q.header[1]+'</th></tr>';
+  q.statements.forEach(function(stmt,i){
+    var ua=userAnswers[currentQ]||{};
+    var rowCls=chk?((ua[i]!==undefined&&parseInt(ua[i])===stmt.correct)?'tf-row-correct':'tf-row-wrong'):'';
+    h+='<tr class="'+rowCls+'"><td class="stmt">'+stmt.text;
+    if(chk&&parseInt(ua[i])!==stmt.correct)h+=' <em style="color:#c53030;font-size:0.8em">(→ '+q.header[stmt.correct]+')</em>';
+    h+='</td>';
+    [0,1].forEach(function(v){
+      var checked2=(ua[i]!==undefined)&&(parseInt(ua[i])===v);
+      h+='<td class="tf-radio-cell"><input type="radio" name="tf_'+currentQ+'_'+i+'" value="'+v+'"'+(checked2?' checked':'')+(chk?' disabled':'')+'></td>';
     });
-    html+=`</select>`;
-    if(isChecked){
-      const ua=userAnswers[currentQ]||{};
-      const sel=parseInt(ua[i]);
-      if(sel!==q.correct[i]) html+=`<span style="font-size:0.75em;color:#276749;margin-left:4px">✓ ${q.rightItems[q.correct[i]]}</span>`;
-    }
-    html+=`</div></div>`;
+    h+='</tr>';
   });
-  return html;
+  h+='</table>';
+  return h;
 }
-
-function renderFillinNumber(q, isChecked){
-  let html='';
-  q.sentences.forEach((s,i)=>{
-    let cls='';
-    if(isChecked){
-      const ua=userAnswers[currentQ]||{};
-      cls=(ua[i]===s.correct)?'correct-sel':'wrong-sel';
-    }
-    html+=`<div class="fillin-sentence">${s.before}<input type="number" class="fillin-input ${cls}" data-idx="${i}" placeholder="?" ${isChecked?'disabled':''}>${s.after}`;
-    if(isChecked){
-      const ua=userAnswers[currentQ]||{};
-      if(ua[i]!==s.correct) html+=` <em style="color:#c53030;font-size:0.8em">(korrekt: ${s.correct})</em>`;
-    }
-    html+=`</div>`;
-  });
-  return html;
-}
-
-function renderFillinSelect(q, isChecked){
-  let html='';
-  q.sentences.forEach((s,i)=>{
-    let cls='';
-    if(isChecked){
-      const ua=userAnswers[currentQ]||{};
-      cls=(ua[i]===s.correct)?'correct-sel':'wrong-sel';
-    }
-    html+=`<div class="fillin-sentence">${s.before}<span class="fillin-sel"><select class="match-select ${cls}" style="display:inline-block;width:auto" data-idx="${i}" ${isChecked?'disabled':''}>
-      <option value="">?</option>`;
-    q.options.forEach(opt=>{html+=`<option value="${opt}">${opt}</option>`;});
-    html+=`</select></span>${s.after}`;
-    if(isChecked){
-      const ua=userAnswers[currentQ]||{};
-      if(ua[i]!==s.correct) html+=` <em style="color:#c53030;font-size:0.8em">(korrekt: ${s.correct})</em>`;
-    }
-    html+=`</div>`;
-  });
-  return html;
-}
-
-function renderTFMatrix(q, isChecked){
-  let html=`<table class="tf-table"><tr><th style="width:55%;text-align:left">Aussage</th><th>${q.header[0]}</th><th>${q.header[1]}</th></tr>`;
-  q.statements.forEach((stmt,i)=>{
-    const ua=userAnswers[currentQ]||{};
-    let rowCls='';
-    if(isChecked){
-      const sel=ua[i];
-      rowCls=(sel!==undefined&&parseInt(sel)===stmt.correct)?'tf-row-correct':'tf-row-wrong';
-    }
-    html+=`<tr class="${rowCls}"><td class="stmt">${stmt.text}`;
-    if(isChecked){
-      const sel=parseInt(ua[i]);
-      if(sel!==stmt.correct) html+=` <em style="color:#c53030;font-size:0.8em">(→ ${q.header[stmt.correct]})</em>`;
-    }
-    html+=`</td>`;
-    [0,1].forEach(v=>{
-      const ua2=userAnswers[currentQ]||{};
-      const checked2=(ua2[i]!==undefined)&&(parseInt(ua2[i])===v);
-      html+=`<td class="tf-radio-cell"><input type="radio" name="tf_${currentQ}_${i}" value="${v}" ${checked2?'checked':''} ${isChecked?'disabled':''}></td>`;
-    });
-    html+=`</tr>`;
-  });
-  html+=`</table>`;
-  return html;
-}
-
-function renderOrdering(q, isChecked){
-  const ua=userAnswers[currentQ]||{};
-  let html=`<div class="order-items">`;
-  for(let pos=0;pos<q.correct.length;pos++){
-    html+=`<div class="order-row">
-      <div class="order-pos">${pos+1}.</div>
-      <select class="order-select" data-pos="${pos}" ${isChecked?'disabled':''}>
-        <option value="">– wählen –</option>`;
-    q.items.forEach(item=>{
-      const selected=(ua[pos]===item)?'selected':'';
-      html+=`<option value="${item}" ${selected}>${item}</option>`;
-    });
-    html+=`</select>`;
-    if(isChecked){
-      const selected=ua[pos];
-      const correct=q.correct[pos];
-      if(selected===correct) html+=`<span style="color:#48bb78;font-size:0.85em">✓</span>`;
-      else html+=`<span style="color:#c53030;font-size:0.8em">✗ → ${correct}</span>`;
-    }
-    html+=`</div>`;
+function rOrder(q,chk){
+  var ua=userAnswers[currentQ]||{};
+  var h='<div class="order-items">';
+  for(var pos=0;pos<q.correct.length;pos++){
+    h+='<div class="order-row"><div class="order-pos">'+(pos+1)+'.</div><select class="order-select" data-pos="'+pos+'"'+(chk?' disabled':'')+'><option value="">&#8211; w&auml;hlen &#8211;</option>';
+    q.items.forEach(function(item){h+='<option value="'+item+'"'+(ua[pos]===item?' selected':'')+'>'+item+'</option>';});
+    h+='</select>';
+    if(chk){if(ua[pos]===q.correct[pos])h+='<span style="color:#48bb78;font-size:0.85em">&#10003;</span>';else h+='<span style="color:#c53030;font-size:0.8em">&#10007; → '+q.correct[pos]+'</span>';}
+    h+='</div>';
   }
-  html+=`</div>`;
-  return html;
+  h+='</div>';
+  return h;
+}
+function rFreetext(q){
+  return '<div class="freetext-info">&#9997; Dies ist eine Freitext-Frage. &Uuml;berlegen Sie Ihre Antwort, dann klicken Sie auf "Musterantwort zeigen".</div>'
+    +'<button class="model-answer-btn" onclick="document.getElementById(\'ma_'+q.id+'\').style.display=\'block\';this.style.display=\'none\'">Musterantwort zeigen</button>'
+    +'<div class="model-answer-box" id="ma_'+q.id+'"><h4>&#128203; Musterantwort:</h4><p>'+q.modelAnswer+'</p></div>';
 }
 
-function renderFreetext(q){
-  return `<div class="freetext-info">✍️ Dies ist eine Freitext-Frage. Überlegen Sie Ihre Antwort, dann klicken Sie auf "Musterantwort zeigen".</div>
-  <button class="model-answer-btn" onclick="document.getElementById('ma_${q.id}').style.display='block';this.style.display='none'">Musterantwort zeigen</button>
-  <div class="model-answer-box" id="ma_${q.id}"><h4>📋 Musterantwort:</h4><p>${q.modelAnswer}</p></div>`;
-}
-
-// ==========================================================
-// SAVE / RESTORE ANSWERS
-// ==========================================================
 function saveCurrentAnswer(){
-  const q = questions[currentQ];
+  var q=questions[questionOrder[currentQ]];
   if(q.type==='multiple'){
-    const boxes=document.querySelectorAll(`input[name="q${currentQ}"]:checked`);
-    userAnswers[currentQ]=Array.from(boxes).map(b=>parseInt(b.value));
+    var boxes=document.querySelectorAll('input[name="q'+currentQ+'"]:checked');
+    userAnswers[currentQ]=Array.from(boxes).map(function(b){return parseInt(b.value);});
   } else if(q.type==='single'){
-    const r=document.querySelector(`input[name="q${currentQ}"]:checked`);
+    var r=document.querySelector('input[name="q'+currentQ+'"]:checked');
     userAnswers[currentQ]=r?parseInt(r.value):null;
   } else if(q.type==='matching'){
-    const sels=document.querySelectorAll('.match-select[data-idx]');
-    let ans={};
-    sels.forEach(s=>{ans[s.dataset.idx]=s.value;});
+    var sels=document.querySelectorAll('.match-select[data-idx]');
+    var ans={};sels.forEach(function(s){ans[s.dataset.idx]=s.value;});
     userAnswers[currentQ]=ans;
   } else if(q.type==='fillin-number'){
-    const inputs=document.querySelectorAll('.fillin-input[data-idx]');
-    let ans={};
-    inputs.forEach(inp=>{ans[inp.dataset.idx]=inp.value.toString();});
+    var inputs=document.querySelectorAll('.fillin-input[data-idx]');
+    var ans={};inputs.forEach(function(inp){ans[inp.dataset.idx]=inp.value.toString();});
     userAnswers[currentQ]=ans;
   } else if(q.type==='fillin-select'){
-    const sels=document.querySelectorAll('.match-select[data-idx]');
-    let ans={};
-    sels.forEach(s=>{ans[s.dataset.idx]=s.value;});
+    var sels=document.querySelectorAll('.match-select[data-idx]');
+    var ans={};sels.forEach(function(s){ans[s.dataset.idx]=s.value;});
     userAnswers[currentQ]=ans;
   } else if(q.type==='tf-matrix'){
-    let ans={};
-    q.statements.forEach((_,i)=>{
-      const r=document.querySelector(`input[name="tf_${currentQ}_${i}"]:checked`);
-      if(r) ans[i]=parseInt(r.value);
+    var ans={};
+    q.statements.forEach(function(_,i){
+      var r=document.querySelector('input[name="tf_'+currentQ+'_'+i+'"]:checked');
+      if(r)ans[i]=parseInt(r.value);
     });
     userAnswers[currentQ]=ans;
   } else if(q.type==='ordering'){
-    const sels=document.querySelectorAll('.order-select[data-pos]');
-    let ans={};
-    sels.forEach(s=>{ans[parseInt(s.dataset.pos)]=s.value;});
+    var sels=document.querySelectorAll('.order-select[data-pos]');
+    var ans={};sels.forEach(function(s){ans[parseInt(s.dataset.pos)]=s.value;});
     userAnswers[currentQ]=ans;
   }
 }
 
-function restoreAnswer(q, ua, isChecked){
-  if(!ua) return;
+function restoreAnswer(q,ua){
+  if(!ua)return;
   if(q.type==='multiple'&&Array.isArray(ua)){
-    ua.forEach(v=>{
-      const cb=document.querySelector(`input[name="q${currentQ}"][value="${v}"]`);
-      if(cb) cb.checked=true;
-    });
+    ua.forEach(function(v){var cb=document.querySelector('input[name="q'+currentQ+'"][value="'+v+'"]');if(cb)cb.checked=true;});
   } else if(q.type==='single'&&ua!==null){
-    const r=document.querySelector(`input[name="q${currentQ}"][value="${ua}"]`);
-    if(r) r.checked=true;
+    var r=document.querySelector('input[name="q'+currentQ+'"][value="'+ua+'"]');
+    if(r)r.checked=true;
   }
-  // matching/fillin/tf/ordering are restored during render via ua reference
 }
 
 function checkAnswer(){
@@ -983,114 +870,210 @@ function checkAnswer(){
   renderQuestion();
 }
 
-// ==========================================================
-// CORRECTNESS CHECK
-// ==========================================================
-function isAnswerCorrect(q, ua){
-  if(!ua) return false;
-  if(q.type==='multiple'){
-    if(!Array.isArray(ua)) return false;
-    const a=[...ua].sort().join(',');
-    const b=[...q.correct].sort().join(',');
-    return a===b;
-  } else if(q.type==='single'){
-    return ua===q.correct;
-  } else if(q.type==='matching'){
-    return q.correct.every((c,i)=>parseInt(ua[i])===c);
-  } else if(q.type==='fillin-number'){
-    return q.sentences.every((s,i)=>ua[i]===s.correct);
-  } else if(q.type==='fillin-select'){
-    return q.sentences.every((s,i)=>ua[i]===s.correct);
-  } else if(q.type==='tf-matrix'){
-    return q.statements.every((s,i)=>parseInt(ua[i])===s.correct);
-  } else if(q.type==='ordering'){
-    return q.correct.every((c,i)=>ua[i]===c);
-  }
+function isCorrect(q,ua){
+  if(!ua)return false;
+  if(q.type==='multiple'){if(!Array.isArray(ua))return false;return [...ua].sort().join(',') === [...q.correct].sort().join(',');}
+  if(q.type==='single')return ua===q.correct;
+  if(q.type==='matching')return q.correct.every(function(c,i){return parseInt(ua[i])===c;});
+  if(q.type==='fillin-number')return q.sentences.every(function(s,i){return ua[i]===s.correct;});
+  if(q.type==='fillin-select')return q.sentences.every(function(s,i){return ua[i]===s.correct;});
+  if(q.type==='tf-matrix')return q.statements.every(function(s,i){return parseInt(ua[i])===s.correct;});
+  if(q.type==='ordering')return q.correct.every(function(c,i){return ua[i]===c;});
   return false;
 }
 
-// ==========================================================
-// RESULTS
-// ==========================================================
-function showResults(){
+// ── RESULTS ────────────────────────────────────────────
+function doShowResults(){
   document.getElementById('quizScreen').classList.remove('active');
   document.getElementById('progressWrap').style.display='none';
-  document.getElementById('resultsScreen').classList.add('active');
-
-  let correct=0;
-  const details=questions.map((q,i)=>{
-    if(q.type==='freetext') return {q,ok:true,freetext:true};
-    const ok=isAnswerCorrect(q,userAnswers[i]);
-    if(ok) correct++;
-    return {q,ok,freetext:false};
+  var correct=0;
+  var nonFree=0;
+  wrongQs=[];
+  var details=questions.map(function(q,i){
+    var qpos=questionOrder.indexOf(i);
+    if(q.type==='freetext')return{q:q,ok:true,freetext:true};
+    nonFree++;
+    var ok=isCorrect(q,userAnswers[qpos]);
+    if(ok)correct++;
+    else wrongQs.push({q:q,ua:userAnswers[qpos]});
+    return{q:q,ok:ok,freetext:false};
   });
-
-  const nonFree=questions.filter(q=>q.type!=='freetext').length;
-  const pct=Math.round(correct/nonFree*100);
-  let grade;
-  if(pct>=90) grade='A (sehr gut)';
-  else if(pct>=80) grade='B (gut)';
-  else if(pct>=70) grade='C (befriedigend)';
-  else if(pct>=60) grade='D (ausreichend)';
+  lastScore=correct; lastMax=nonFree;
+  var pct=Math.round(correct/nonFree*100);
+  var grade;
+  if(pct>=90)grade='A (sehr gut)';
+  else if(pct>=80)grade='B (gut)';
+  else if(pct>=70)grade='C (befriedigend)';
+  else if(pct>=60)grade='D (ausreichend)';
   else grade='F (ungenügend)';
-
-  document.getElementById('scoreNum').textContent=`${correct}/${nonFree}`;
+  document.getElementById('scoreNum').textContent=correct+'/'+nonFree;
   document.getElementById('gradeBadge').textContent=grade;
-  document.getElementById('scoreMsg').textContent=`${pct}% korrekt (Freitextfragen nicht gewertet)`;
-
-  let detHtml='';
-  details.forEach(({q,ok,freetext},i)=>{
-    const cls=freetext?'rh-correct':(ok?'rh-correct':'rh-wrong');
-    const icon=freetext?'📝':(ok?'✅':'❌');
-    detHtml+=`<div class="results-q-card">
-      <div class="results-q-header ${cls}" onclick="toggleResult(${i})">
-        <span>${q.title}</span>
-        <span>${icon}</span>
-      </div>
-      <div class="results-q-body" id="rb_${i}">`;
-    if(!freetext){
-      if(ok){
-        detHtml+=`<p style="color:#276749">✓ Korrekt beantwortet!</p>`;
-      } else {
-        detHtml+=`<p style="color:#c53030;margin-bottom:8px">Korrekte Antwort(en):</p>`;
-        if(q.type==='multiple'||q.type==='single'){
-          const corrArr=q.type==='single'?[q.correct]:q.correct;
-          corrArr.forEach(ci=>{detHtml+=`<p>• ${q.options[ci]}</p>`;});
-        } else if(q.type==='matching'){
-          q.correct.forEach((ci,li)=>{detHtml+=`<p>• ${q.leftItems[li]} → ${q.rightItems[ci]}</p>`;});
-        } else if(q.type==='tf-matrix'){
-          q.statements.forEach((s,si)=>{detHtml+=`<p>• ${s.text} → ${q.header[s.correct]}</p>`;});
-        } else if(q.type==='ordering'){
-          q.correct.forEach((c,p)=>{detHtml+=`<p>${p+1}. ${c}</p>`;});
-        } else if(q.type==='fillin-number'){
-          q.sentences.forEach((s,si)=>{detHtml+=`<p>• ${s.before}<strong>${s.correct}</strong>${s.after}</p>`;});
-        } else if(q.type==='fillin-select'){
-          q.sentences.forEach((s,si)=>{detHtml+=`<p>• ${s.before}<strong>${s.correct}</strong>${s.after}</p>`;});
-        }
+  document.getElementById('scoreMsg').textContent=pct+'% korrekt (Freitextfragen nicht gewertet)';
+  var detHtml='';
+  details.forEach(function(d,i){
+    var cls=d.freetext?'rh-correct':(d.ok?'rh-correct':'rh-wrong');
+    var icon=d.freetext?'&#128221;':(d.ok?'&#10003;':'&#10007;');
+    detHtml+='<div class="results-q-card"><div class="results-q-header '+cls+'" onclick="toggleResult('+i+')"><span>'+d.q.title+'</span><span>'+icon+'</span></div><div class="results-q-body" id="rb_'+i+'">';
+    if(!d.freetext){
+      if(d.ok){detHtml+='<p style="color:#276749">&#10003; Korrekt beantwortet!</p>';}
+      else{
+        detHtml+='<p style="color:#c53030;margin-bottom:8px">Korrekte Antwort(en):</p>';
+        var q=d.q;
+        if(q.type==='multiple'||q.type==='single'){var ca=q.type==='single'?[q.correct]:q.correct;ca.forEach(function(ci){detHtml+='<p>&bull; '+q.options[ci]+'</p>';});}
+        else if(q.type==='matching'){q.correct.forEach(function(ci,li){detHtml+='<p>&bull; '+q.leftItems[li]+' → '+q.rightItems[ci]+'</p>';});}
+        else if(q.type==='tf-matrix'){q.statements.forEach(function(s,si){detHtml+='<p>&bull; '+s.text+' → '+q.header[s.correct]+'</p>';});}
+        else if(q.type==='ordering'){q.correct.forEach(function(c,p){detHtml+='<p>'+(p+1)+'. '+c+'</p>';});}
+        else if(q.type==='fillin-number'){q.sentences.forEach(function(s){detHtml+='<p>&bull; '+s.before+'<strong>'+s.correct+'</strong>'+s.after+'</p>';});}
+        else if(q.type==='fillin-select'){q.sentences.forEach(function(s){detHtml+='<p>&bull; '+s.before+'<strong>'+s.correct+'</strong>'+s.after+'</p>';});}
       }
-    } else {
-      detHtml+=`<p style="margin-bottom:6px;font-weight:600">Musterantwort:</p><p>${q.modelAnswer}</p>`;
-    }
-    detHtml+=`</div></div>`;
+    } else {detHtml+='<p style="margin-bottom:6px;font-weight:600">Musterantwort:</p><p>'+d.q.modelAnswer+'</p>';}
+    detHtml+='</div></div>';
   });
   document.getElementById('resultsDetail').innerHTML=detHtml;
+  document.getElementById('resultsScreen').classList.add('active');
+  // Save score
+  saveScore(currentUser, correct, nonFree);
   window.scrollTo(0,0);
 }
 
-function toggleResult(i){
-  const el=document.getElementById(`rb_${i}`);
-  el.classList.toggle('open');
+function saveScore(name, score, maxScore){
+  var scores=getScores();
+  scores.push({name:name, score:score, maxScore:maxScore, pct:Math.round(score/maxScore*100), date:new Date().toLocaleDateString('de-CH')});
+  try{localStorage.setItem(STORAGE_KEY, JSON.stringify(scores));}catch(e){}
 }
 
-function restartQuiz(){
-  currentQ=0;
-  userAnswers=new Array(questions.length).fill(null);
-  checked=new Array(questions.length).fill(false);
-  document.getElementById('resultsScreen').classList.remove('active');
-  document.getElementById('progressWrap').style.display='block';
-  document.getElementById('quizScreen').classList.add('active');
-  renderQuestion();
+function getScores(){
+  try{var s=localStorage.getItem(STORAGE_KEY);return s?JSON.parse(s):[];}catch(e){return[];}
 }
+
+function toggleResult(i){
+  document.getElementById('rb_'+i).classList.toggle('open');
+}
+
+function restartFromResults(){
+  document.getElementById('resultsScreen').classList.remove('active');
+  document.getElementById('startScreen').classList.add('active');
+}
+
+// ── PODIUM ─────────────────────────────────────────────
+function showPodium(){
+  document.getElementById('resultsScreen').classList.remove('active');
+  document.getElementById('podiumScreen').classList.add('active');
+  renderPodium();
+  var btn=document.getElementById('btnWrongReview');
+  if(btn){
+    if(wrongQs.length>0){btn.style.display='block';btn.textContent='❌ Falsche Fragen anzeigen ('+wrongQs.length+')';}
+    else{btn.style.display='none';}
+  }
+  window.scrollTo(0,0);
+}
+
+function renderPodium(){
+  var scores=getScores().slice().sort(function(a,b){return b.pct-a.pct;});
+  document.getElementById('podiumSub').textContent=scores.length+' Ergebnis'+(scores.length===1?'':'se')+' gespeichert';
+
+  var emojis=['&#127881;','&#127882;','&#128081;','&#11088;','&#127775;'];
+  var colors=['#f6e05e','#e2e8f0','#e8b88a'];
+  var podiumOrder=[1,0,2]; // 2nd, 1st, 3rd
+  var stageHtml='';
+  podiumOrder.forEach(function(rank){
+    var entry=scores[rank];
+    if(!entry){stageHtml+='<div class="podium-col" style="opacity:0.3"><div class="podium-avatar" style="background:#e2e8f0">&#63;</div><div class="podium-name">-</div><div class="podium-score">-</div><div class="podium-bar p'+(rank+1)+'" style="background:#e2e8f0"><span class="podium-rank">'+(rank+1)+'.</span></div></div>';return;}
+    var barCls='p'+(rank+1);
+    stageHtml+='<div class="podium-col"><div class="podium-avatar" style="background:'+(rank===0?'linear-gradient(135deg,#f6e05e,#d69e2e)':rank===1?'linear-gradient(135deg,#e2e8f0,#a0aec0)':'linear-gradient(135deg,#e8b88a,#b7791f)')+'">'+emojis[rank]+'</div><div class="podium-name">'+entry.name+'</div><div class="podium-score">'+entry.score+'/'+entry.maxScore+' ('+entry.pct+'%)</div><div class="podium-bar '+barCls+'"><span class="podium-rank">'+(rank+1)+'.</span></div></div>';
+  });
+  document.getElementById('podiumStage').innerHTML=stageHtml;
+
+  var listHtml='';
+  scores.forEach(function(s,i){
+    var medal=['&#129351;','&#129352;','&#129353;'][i]||(i<9?'&#9757;':'&#128100;');
+    var isMe=s.name===currentUser;
+    var bar='<div style="height:4px;background:#e2e8f0;border-radius:2px;margin-top:4px"><div style="height:100%;width:'+s.pct+'%;background:#003087;border-radius:2px"></div></div>';
+    listHtml+='<div class="ranking-row'+(isMe?' me':'')+'"><div class="rank-pos">'+(i+1)+'</div><div class="rank-medal">'+medal+'</div><div class="rank-name">'+s.name+(isMe?' <span style="font-size:0.75em;color:#003087">(ich)</span>':'')+'<br>'+bar+'</div><div class="rank-score">'+s.score+'/'+s.maxScore+'<span class="rank-pct">'+s.pct+'%</span></div></div>';
+  });
+  if(listHtml==='')listHtml='<div class="ranking-row"><div style="color:#718096;font-size:0.9em;padding:4px">Noch keine Eintr&auml;ge.</div></div>';
+  document.getElementById('rankingList').innerHTML=listHtml;
+
+  // Confetti for rank 1
+  if(scores.length>0&&scores[0].name===currentUser){
+    launchConfetti();
+  }
+}
+
+function launchConfetti(){
+  var container=document.getElementById('confettiContainer');
+  container.innerHTML='';
+  var colors=['#f6e05e','#48bb78','#003087','#fc8181','#90cdf4','#f6ad55'];
+  for(var i=0;i<60;i++){
+    var el=document.createElement('div');
+    el.className='confetti-piece';
+    el.style.left=Math.random()*100+'%';
+    el.style.backgroundColor=colors[Math.floor(Math.random()*colors.length)];
+    el.style.borderRadius=Math.random()>0.5?'50%':'2px';
+    el.style.animationDuration=(1.5+Math.random()*2)+'s';
+    el.style.animationDelay=(Math.random()*1.5)+'s';
+    el.style.width=el.style.height=(6+Math.random()*6)+'px';
+    container.appendChild(el);
+  }
+  setTimeout(function(){container.innerHTML='';},4000);
+}
+
+function playAgain(){
+  wrongQs=[];
+  document.getElementById('podiumScreen').classList.remove('active');
+  document.getElementById('startScreen').classList.add('active');
+}
+
+function clearScores(){
+  if(confirm('Rangliste wirklich leeren?')){
+    try{localStorage.removeItem(STORAGE_KEY);}catch(e){}
+    renderPodium();
+  }
+}
+
+function showWrongReview(){
+  document.getElementById('podiumScreen').classList.remove('active');
+  document.getElementById('wrongScreen').classList.add('active');
+  var html='<div class="wrong-banner"><h3>&#10060; Falsche Antworten</h3><p>'+wrongQs.length+' Frage'+(wrongQs.length!==1?'n':'')+' nochmals ansehen</p></div>';
+  if(wrongQs.length===0){
+    html='<p style="color:#718096;text-align:center;padding:20px">&#10003; Keine falschen Antworten &#8211; Perfekt!</p>';
+  } else {
+    wrongQs.forEach(function(item){
+      var q=item.q;
+      html+='<div class="wrong-card">';
+      html+='<div class="wrong-card-head">'+q.title+'</div>';
+      html+='<div class="wrong-card-body">';
+      if(q.context)html+='<div class="q-context" style="margin-bottom:8px">'+q.context+'</div>';
+      html+='<div class="wrong-q-text">'+q.text+'</div>';
+      html+='<p style="font-size:0.8em;color:#c53030;margin:8px 0 4px"><strong>Korrekte Antwort(en):</strong></p>';
+      if(q.type==='multiple'){
+        q.correct.forEach(function(ci){html+='<div class="wrong-answer">'+q.options[ci]+'</div>';});
+      } else if(q.type==='single'){
+        html+='<div class="wrong-answer">'+q.options[q.correct]+'</div>';
+      } else if(q.type==='matching'){
+        q.correct.forEach(function(ci,li){html+='<div class="wrong-answer" style="justify-content:flex-start">'+q.leftItems[li]+' &#8594; '+q.rightItems[ci]+'</div>';});
+      } else if(q.type==='tf-matrix'){
+        q.statements.forEach(function(s){html+='<div class="wrong-answer">'+s.text+' &#8594; '+q.header[s.correct]+'</div>';});
+      } else if(q.type==='fillin-number'){
+        q.sentences.forEach(function(s){html+='<div class="wrong-answer">'+s.before+'<strong>'+s.correct+'</strong>'+s.after+'</div>';});
+      } else if(q.type==='fillin-select'){
+        q.sentences.forEach(function(s){html+='<div class="wrong-answer">'+s.before+'<strong>'+s.correct+'</strong>'+s.after+'</div>';});
+      } else if(q.type==='ordering'){
+        q.correct.forEach(function(c,p){html+='<div class="wrong-answer">'+(p+1)+'. '+c+'</div>';});
+      }
+      html+='</div></div>';
+    });
+  }
+  document.getElementById('wrongList').innerHTML=html;
+  window.scrollTo(0,0);
+}
+
+function backToPodium(){
+  document.getElementById('wrongScreen').classList.remove('active');
+  document.getElementById('podiumScreen').classList.add('active');
+  window.scrollTo(0,0);
+}
+
 </script>
 </body>
 </html>
